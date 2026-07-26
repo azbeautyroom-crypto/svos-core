@@ -63,19 +63,60 @@ def wiki(path: str, label: str | None = None) -> str:
     return f"[[{target}{'|' + label if label else ''}]]"
 
 
+def system_label(system: dict[str, Any]) -> str:
+    """The noun used in generated wording (e.g. 'Executive', 'Operations')."""
+    return system.get("label") or system["name"].replace(" System", "").strip()
+
+
+def ks_path(source: Any) -> str:
+    """A knowledge_sources entry may be a string path or {path, ...}."""
+    return source["path"] if isinstance(source, dict) else source
+
+
+def cs_name(item: Any) -> str:
+    """A connected_systems entry may be a string or {name, source, authority}."""
+    return item["name"] if isinstance(item, dict) else item
+
+
+# Special generated document per folder role; other roles use the folder title uppercased.
+ROLE_PRIMARY_DOC = {
+    "control_center": "CONTROL CENTER",
+    "charter": "CHARTER",
+    "metrics": "METRIC REGISTRY",
+    "jobs": "JOB REGISTRY",
+    "automations": "AUTOMATION REGISTRY",
+    "knowledge": "KNOWLEDGE MAP",
+    "decisions": "DECISIONS",
+    "improvements": "IMPROVEMENTS",
+    "archive": "README",
+}
+
+
+def primary_doc(folder: dict[str, Any]) -> str:
+    return ROLE_PRIMARY_DOC.get(folder.get("role"), folder["title"].upper())
+
+
+def role_folder(system: dict[str, Any], role: str) -> str | None:
+    for folder in system["folders"]:
+        if folder.get("role") == role:
+            return folder["id"]
+    return None
+
+
 def render_job(system: dict[str, Any], job_name: str, index: int) -> str:
     job_id = f"{system['system_id']}-JOB-{index:03d}"
+    label = system_label(system)
     return f"""{frontmatter(job_name, 'job', status='review', owner=system['owner'], job_id=job_id, governing_system=system['system_id'])}
 
 # {job_name}
 
 ## Purpose
 
-Execute the Executive responsibility named **{job_name}** using verified company sources and visible approval gates.
+Execute the {label} responsibility named **{job_name}** using verified company sources and visible approval gates.
 
 ## Trigger
 
-Manual founder request, scheduled Executive review, threshold breach, or routed Operations request.
+Manual founder request, scheduled {label} review, threshold breach, or routed Operations request.
 
 ## Owner
 
@@ -99,12 +140,12 @@ The active Project that triggered the Job, when applicable.
 
 ## Required Sources
 
-""" + "\n".join(f"- {wiki(source)}" for source in system["knowledge_sources"]) + """
+""" + "\n".join(f"- {wiki(ks_path(source))}" for source in system["knowledge_sources"]) + f"""
 
 ## Preconditions
 
 - Required sources exist.
-- The request is within Executive scope.
+- The request is within {label} scope.
 - Material facts are verified.
 - Founder approval requirements are known.
 
@@ -113,10 +154,10 @@ The active Project that triggered the Job, when applicable.
 1. Identify the objective and triggering Project or company condition.
 2. Load canonical Knowledge and current system state.
 3. Verify metrics, risks, open decisions, and dependencies.
-4. Produce the Executive recommendation or review result.
+4. Produce the {label} recommendation or review result.
 5. Route execution work to Operations rather than performing department work directly.
 6. Create an Approval or Decision record when required.
-7. Update the Executive Control Center and affected registries.
+7. Update the {label} Control Center and affected registries.
 
 ## Decision Rules
 
@@ -127,11 +168,11 @@ The active Project that triggered the Job, when applicable.
 
 ## Output
 
-An Executive review, decision recommendation, priority directive, approval request, or company-health update.
+An {label} review, decision recommendation, priority directive, approval request, or company-health update.
 
 ## Destination
 
-Executive System, active Project, Decision Registry, Approval Registry, or Operations routing queue.
+{label} System, active Project, Decision Registry, Approval Registry, or Operations routing queue.
 
 ## Quality Check
 
@@ -155,7 +196,7 @@ Retry after the missing evidence, approval, or dependency becomes available.
 
 ## Completion
 
-The Executive output is documented, routed, registered, and reflected in the Control Center.
+The {label} output is documented, routed, registered, and reflected in the Control Center.
 
 ## Lessons
 
@@ -165,6 +206,7 @@ Record founder corrections that should improve this Job.
 
 def render_metric(system: dict[str, Any], metric_name: str, index: int) -> str:
     metric_id = f"{system['system_id']}-MET-{index:03d}"
+    label = system_label(system)
     return f"""{frontmatter(metric_name, 'metric', status='review', owner=system['owner'], metric_id=metric_id, governing_system=system['system_id'])}
 
 # {metric_name}
@@ -175,7 +217,7 @@ def render_metric(system: dict[str, Any], metric_name: str, index: int) -> str:
 
 ## Type
 
-Executive system-health or outcome metric.
+{label} system-health or outcome metric.
 
 ## System
 
@@ -211,19 +253,20 @@ Executive system-health or outcome metric.
 
 ## Action
 
-Route threshold breaches to Executive review, Monitoring, and the owning Business System.
+Route threshold breaches to {label} review, Monitoring, and the owning Business System.
 """
 
 
 def render_automation(system: dict[str, Any], automation_name: str, index: int) -> str:
     automation_id = f"{system['system_id']}-AUTO-{index:03d}"
+    label = system_label(system)
     return f"""{frontmatter(automation_name, 'automation', status='proposed', owner=system['owner'], automation_id=automation_id, governing_system=system['system_id'])}
 
 # {automation_name}
 
 ## Purpose
 
-Prepare or route the Executive process named **{automation_name}**.
+Prepare or route the {label} process named **{automation_name}**.
 
 ## Governing System
 
@@ -231,7 +274,7 @@ Prepare or route the Executive process named **{automation_name}**.
 
 ## Executed Job
 
-`NOT IN SOURCE — link the approved Executive Job before activation.`
+`NOT IN SOURCE — link the approved {label} Job before activation.`
 
 ## Trigger
 
@@ -239,7 +282,7 @@ Prepare or route the Executive process named **{automation_name}**.
 
 ## Inputs
 
-Canonical Executive sources, current metrics, Project state, decisions, approvals, and system health.
+Canonical {label} sources, current metrics, Project state, decisions, approvals, and system health.
 
 ## Tools
 
@@ -305,28 +348,36 @@ Proposed; inactive.
 
 def compile_system(system_path: Path, business_root: Path, registries: dict[str, list[list[str]]]) -> None:
     system = load_json(system_path)
-    required = ["system_id", "folder_name", "name", "owner", "purpose", "authority", "out_of_scope", "knowledge_sources", "jobs", "metrics", "automations"]
+    required = ["system_id", "folder_name", "name", "owner", "purpose", "authority", "out_of_scope", "knowledge_sources", "jobs", "metrics", "automations", "folders"]
     missing = [field for field in required if field not in system]
     if missing:
         raise SystemExit(f"{system_path} missing fields: {', '.join(missing)}")
 
+    label = system_label(system)
     root = business_root / system["folder_name"]
-    folders = [
-        "00 Control Center", "01 Charter", "02 Strategic Planning", "03 Company Priorities",
-        "04 Decision Management", "05 Founder Approval", "06 Resource Allocation",
-        "07 Cross-System Governance", "08 Risk Management", "09 Executive Reviews",
-        "10 Company Health", "11 Metrics", "12 Jobs", "13 Automations", "14 Knowledge",
-        "15 Decisions", "16 Improvements", "17 Archive"
-    ]
+    folders = sorted(system["folders"], key=lambda f: f["index"])
     for folder in folders:
-        (root / folder).mkdir(parents=True, exist_ok=True)
+        (root / folder["id"]).mkdir(parents=True, exist_ok=True)
 
-    source_links = "\n".join(f"- {wiki(source)}" for source in system["knowledge_sources"])
-    connected = "\n".join(f"- {name}" for name in system.get("connected_systems", []))
+    cc_id = role_folder(system, "control_center")
+    charter_id = role_folder(system, "charter")
+    approval_id = role_folder(system, "founder_approval")
+    decision_mgmt_id = role_folder(system, "decision_management")
+    jobs_id = role_folder(system, "jobs")
+    metrics_id = role_folder(system, "metrics")
+    automations_id = role_folder(system, "automations")
+    knowledge_id = role_folder(system, "knowledge")
+    decisions_id = role_folder(system, "decisions")
+    improvements_id = role_folder(system, "improvements")
+    archive_id = role_folder(system, "archive")
+
+    source_links = "\n".join(f"- {wiki(ks_path(source))}" for source in system["knowledge_sources"])
+    connected = "\n".join(f"- {cs_name(name)}" for name in system.get("connected_systems", []))
     authority = "\n".join(f"- {item}" for item in system["authority"])
     out_scope = "\n".join(f"- {item}" for item in system["out_of_scope"])
+    system_map = "\n".join(f"- [[../{f['id']}/{primary_doc(f)}]]" for f in folders if f.get("role") != "control_center")
 
-    write(root / "00 Control Center/CONTROL CENTER.md", f"""{frontmatter(system['name'], 'business-system-control-center', status=system['status'], owner=system['owner'], system_id=system['system_id'], compiled='true')}
+    write(root / cc_id / "CONTROL CENTER.md", f"""{frontmatter(system['name'], 'business-system-control-center', status=system['status'], owner=system['owner'], system_id=system['system_id'], compiled='true')}
 
 # {system['name']}
 
@@ -341,8 +392,8 @@ def compile_system(system_path: Path, business_root: Path, registries: dict[str,
 - Owner: {system['owner']}
 - Automation level: 0
 - Active projects: none connected
-- Open approvals: see [[../05 Founder Approval/APPROVAL REGISTRY]]
-- Open decisions: see [[../04 Decision Management/DECISION REGISTRY]]
+- Open approvals: see [[../{approval_id}/APPROVAL REGISTRY]]
+- Open decisions: see [[../{decision_mgmt_id}/DECISION REGISTRY]]
 - Current blocker: metrics and live integrations require founder configuration
 
 ## Authority
@@ -359,21 +410,14 @@ def compile_system(system_path: Path, business_root: Path, registries: dict[str,
 
 ## System Map
 
-""" + "\n".join(f"- [[../{folder}/{folder.split(' ',1)[1].upper()}]]" for folder in folders[1:11]) + """
-- [[../11 Metrics/METRIC REGISTRY]]
-- [[../12 Jobs/JOB REGISTRY]]
-- [[../13 Automations/AUTOMATION REGISTRY]]
-- [[../14 Knowledge/KNOWLEDGE MAP]]
-- [[../15 Decisions/DECISIONS]]
-- [[../16 Improvements/IMPROVEMENTS]]
-- [[../17 Archive/README]]
+{system_map}
 
 ## Next Action
 
-Founder reviews the Charter, then configures the first Executive metrics and activates the first Executive Job.
+Founder reviews the Charter, then configures the first {label} metrics and activates the first {label} Job.
 """)
 
-    write(root / "01 Charter/CHARTER.md", f"""{frontmatter(f"{system['name']} Charter", 'business-system-charter', status=system['status'], owner=system['owner'], system_id=system['system_id'])}
+    write(root / charter_id / "CHARTER.md", f"""{frontmatter(f"{system['name']} Charter", 'business-system-charter', status=system['status'], owner=system['owner'], system_id=system['system_id'])}
 
 # Charter
 
@@ -391,33 +435,24 @@ Founder reviews the Charter, then configures the first Executive metrics and act
 
 ## Operating Boundary
 
-Executive decides direction, priorities, company-level policies, and strategic approvals. Operations routes and orchestrates execution. Departments perform their specialized work.
+{label} decides direction, priorities, company-level policies, and strategic approvals. Operations routes and orchestrates execution. Departments perform their specialized work.
 
 ## Success Condition
 
 Company priorities are explicit, strategic decisions are documented, risks are visible, approvals are controlled, and execution is routed to the correct Business Systems.
 """)
 
-    section_files = {
-        "02 Strategic Planning/STRATEGIC PLANNING.md": "Annual, quarterly, monthly, and weekly planning aligned to Mission and Vision.",
-        "03 Company Priorities/COMPANY PRIORITIES.md": "The canonical ordered list of active company priorities and deferred initiatives.",
-        "04 Decision Management/DECISION MANAGEMENT.md": "Govern company-level decision creation, evidence, approval, propagation, and review.",
-        "05 Founder Approval/FOUNDER APPROVAL.md": "Govern all items requiring explicit founder approval.",
-        "06 Resource Allocation/RESOURCE ALLOCATION.md": "Set resource direction across time, money, capacity, and strategic attention.",
-        "07 Cross-System Governance/CROSS-SYSTEM GOVERNANCE.md": "Define how Executive aligns and resolves conflicts among Business Systems.",
-        "08 Risk Management/RISK MANAGEMENT.md": "Identify, score, assign, monitor, and resolve material company risks.",
-        "09 Executive Reviews/EXECUTIVE REVIEWS.md": "Define daily, weekly, monthly, quarterly, and annual Executive reviews.",
-        "10 Company Health/COMPANY HEALTH.md": "Summarize strategic, product, operational, financial, customer, and technical health.",
-    }
-    for rel, purpose in section_files.items():
-        title = Path(rel).stem.replace("_", " ").title()
-        write(root / rel, f"""{frontmatter(title, 'business-system-component', status='review', owner=system['owner'], system_id=system['system_id'])}
+    for folder in folders:
+        if folder.get("role") not in ("component", "decision_management", "founder_approval"):
+            continue
+        title = folder["title"]
+        write(root / folder["id"] / f"{title.upper()}.md", f"""{frontmatter(title, 'business-system-component', status='review', owner=system['owner'], system_id=system['system_id'])}
 
 # {title}
 
 ## Purpose
 
-{purpose}
+{folder['purpose']}
 
 ## Inputs
 
@@ -437,7 +472,7 @@ Collect
 
 ## Outputs
 
-Visible Executive records, directives, approvals, decisions, risks, or review results.
+Visible {label} records, directives, approvals, decisions, risks, or review results.
 
 ## Completion
 
@@ -445,42 +480,42 @@ The record has an owner, source links, status, destination, and next action.
 """)
 
     # Registries and index files
-    write(root / "04 Decision Management/DECISION REGISTRY.md", "# Decision Registry\n\n| Decision ID | Title | Status | Owner | Record |\n|---|---|---|---|---|\n")
-    write(root / "05 Founder Approval/APPROVAL REGISTRY.md", "# Approval Registry\n\n| Approval ID | Item | Status | Requested | Decision |\n|---|---|---|---|---|\n")
+    write(root / decision_mgmt_id / "DECISION REGISTRY.md", "# Decision Registry\n\n| Decision ID | Title | Status | Owner | Record |\n|---|---|---|---|---|\n")
+    write(root / approval_id / "APPROVAL REGISTRY.md", "# Approval Registry\n\n| Approval ID | Item | Status | Requested | Decision |\n|---|---|---|---|---|\n")
 
     job_rows = []
     for idx, job_name in enumerate(system["jobs"], 1):
         filename = f"{idx:03d} — {job_name}.md"
-        write(root / "12 Jobs" / filename, render_job(system, job_name, idx))
+        write(root / jobs_id / filename, render_job(system, job_name, idx))
         job_id = f"{system['system_id']}-JOB-{idx:03d}"
         job_rows.append(f"| {job_id} | {job_name} | review | [[{filename[:-3]}]] |")
-        registries["jobs"].append([job_id, job_name, system["system_id"], "review", f"02 Business Systems/{system['folder_name']}/12 Jobs/{filename[:-3]}"])
-    write(root / "12 Jobs/JOB REGISTRY.md", "# Job Registry\n\n| Job ID | Job | Status | File |\n|---|---|---|---|\n" + "\n".join(job_rows) + "\n")
+        registries["jobs"].append([job_id, job_name, system["system_id"], "review", f"02 Business Systems/{system['folder_name']}/{jobs_id}/{filename[:-3]}"])
+    write(root / jobs_id / "JOB REGISTRY.md", "# Job Registry\n\n| Job ID | Job | Status | File |\n|---|---|---|---|\n" + "\n".join(job_rows) + "\n")
 
     metric_rows = []
     for idx, metric_name in enumerate(system["metrics"], 1):
         filename = f"{idx:03d} — {metric_name}.md"
-        write(root / "11 Metrics" / filename, render_metric(system, metric_name, idx))
+        write(root / metrics_id / filename, render_metric(system, metric_name, idx))
         metric_id = f"{system['system_id']}-MET-{idx:03d}"
         metric_rows.append(f"| {metric_id} | {metric_name} | review | [[{filename[:-3]}]] |")
-        registries["metrics"].append([metric_id, metric_name, system["system_id"], "review", f"02 Business Systems/{system['folder_name']}/11 Metrics/{filename[:-3]}"])
-    write(root / "11 Metrics/METRIC REGISTRY.md", "# Metric Registry\n\n| Metric ID | Metric | Status | File |\n|---|---|---|---|\n" + "\n".join(metric_rows) + "\n")
+        registries["metrics"].append([metric_id, metric_name, system["system_id"], "review", f"02 Business Systems/{system['folder_name']}/{metrics_id}/{filename[:-3]}"])
+    write(root / metrics_id / "METRIC REGISTRY.md", "# Metric Registry\n\n| Metric ID | Metric | Status | File |\n|---|---|---|---|\n" + "\n".join(metric_rows) + "\n")
 
     automation_rows = []
     for idx, automation_name in enumerate(system["automations"], 1):
         filename = f"{idx:03d} — {automation_name}.md"
-        write(root / "13 Automations" / filename, render_automation(system, automation_name, idx))
+        write(root / automations_id / filename, render_automation(system, automation_name, idx))
         auto_id = f"{system['system_id']}-AUTO-{idx:03d}"
         automation_rows.append(f"| {auto_id} | {automation_name} | proposed | [[{filename[:-3]}]] |")
-        registries["automations"].append([auto_id, automation_name, system["system_id"], "proposed", f"02 Business Systems/{system['folder_name']}/13 Automations/{filename[:-3]}"])
-    write(root / "13 Automations/AUTOMATION REGISTRY.md", "# Automation Registry\n\n| Automation ID | Automation | Status | File |\n|---|---|---|---|\n" + "\n".join(automation_rows) + "\n")
+        registries["automations"].append([auto_id, automation_name, system["system_id"], "proposed", f"02 Business Systems/{system['folder_name']}/{automations_id}/{filename[:-3]}"])
+    write(root / automations_id / "AUTOMATION REGISTRY.md", "# Automation Registry\n\n| Automation ID | Automation | Status | File |\n|---|---|---|---|\n" + "\n".join(automation_rows) + "\n")
 
-    write(root / "14 Knowledge/KNOWLEDGE MAP.md", f"{frontmatter('Executive Knowledge Map', 'knowledge-map', status='review', owner=system['owner'], system_id=system['system_id'])}\n\n# Knowledge Map\n\n{source_links}\n")
-    write(root / "15 Decisions/DECISIONS.md", f"{frontmatter('Executive Decisions', 'decision-index', status='review', owner=system['owner'], system_id=system['system_id'])}\n\n# Approved Executive Decisions\n\nApproved Decision records are linked here.\n")
-    write(root / "16 Improvements/IMPROVEMENTS.md", f"{frontmatter('Executive System Improvements', 'improvement-index', status='review', owner=system['owner'], system_id=system['system_id'])}\n\n# Executive System Improvements\n\n| Improvement | Source | Status | Decision |\n|---|---|---|---|\n")
-    write(root / "17 Archive/README.md", "# Executive Archive\n\nSuperseded Executive records are archived here and never silently deleted.\n")
+    write(root / knowledge_id / "KNOWLEDGE MAP.md", f"{frontmatter(f'{label} Knowledge Map', 'knowledge-map', status='review', owner=system['owner'], system_id=system['system_id'])}\n\n# Knowledge Map\n\n{source_links}\n")
+    write(root / decisions_id / "DECISIONS.md", f"{frontmatter(f'{label} Decisions', 'decision-index', status='review', owner=system['owner'], system_id=system['system_id'])}\n\n# Approved {label} Decisions\n\nApproved Decision records are linked here.\n")
+    write(root / improvements_id / "IMPROVEMENTS.md", f"{frontmatter(f'{label} System Improvements', 'improvement-index', status='review', owner=system['owner'], system_id=system['system_id'])}\n\n# {label} System Improvements\n\n| Improvement | Source | Status | Decision |\n|---|---|---|---|\n")
+    write(root / archive_id / "README.md", f"# {label} Archive\n\nSuperseded {label} records are archived here and never silently deleted.\n")
 
-    registries["systems"].append([system["system_id"], system["name"], system["status"], system["owner"], f"02 Business Systems/{system['folder_name']}/00 Control Center/CONTROL CENTER"])
+    registries["systems"].append([system["system_id"], system["name"], system["status"], system["owner"], f"02 Business Systems/{system['folder_name']}/{cc_id}/CONTROL CENTER"])
 
 
 def render_global_registries(output: Path, registries: dict[str, list[list[str]]]) -> None:
@@ -507,11 +542,12 @@ def validate_output(output: Path) -> dict[str, Any]:
         # Generated registries/readmes may intentionally be plain markdown.
         if path.name not in {"README.md", "DECISION REGISTRY.md", "APPROVAL REGISTRY.md", "JOB REGISTRY.md", "METRIC REGISTRY.md", "AUTOMATION REGISTRY.md"} and not text.startswith("---\n"):
             no_frontmatter.append(str(path.relative_to(output)))
-    required = [
-        output / "02 Business Systems/001 Executive System/00 Control Center/CONTROL CENTER.md",
-        output / "02 Business Systems/001 Executive System/01 Charter/CHARTER.md",
-        output / "06 Registry/Business System Registry.md",
-    ]
+    required = [output / "06 Registry/Business System Registry.md"]
+    business_root = output / "02 Business Systems"
+    if business_root.exists():
+        for sysdir in sorted(p for p in business_root.iterdir() if p.is_dir()):
+            required.append(sysdir / "00 Control Center/CONTROL CENTER.md")
+            required.append(sysdir / "01 Charter/CHARTER.md")
     missing = [str(path.relative_to(output)) for path in required if not path.exists()]
     return {
         "markdown_files": len(markdown),

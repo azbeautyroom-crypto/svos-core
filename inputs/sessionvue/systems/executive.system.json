@@ -2,6 +2,7 @@
   "system_id": "BS-001",
   "folder_name": "001 Executive System",
   "name": "Executive System",
+  "label": "Executive",
   "status": "review",
   "owner": "founder",
   "purpose": "Ensure every company-level decision advances SessionVue toward its mission while keeping all Business Systems aligned.",
@@ -73,5 +74,25 @@
     "Cross-System Blocker Alert",
     "Decision Propagation Check",
     "Quarterly Planning Prompt"
+  ],
+  "folders": [
+    { "id": "00 Control Center", "index": 0, "title": "Control Center", "role": "control_center", "purpose": "" },
+    { "id": "01 Charter", "index": 1, "title": "Charter", "role": "charter", "purpose": "" },
+    { "id": "02 Strategic Planning", "index": 2, "title": "Strategic Planning", "role": "component", "purpose": "Annual, quarterly, monthly, and weekly planning aligned to Mission and Vision." },
+    { "id": "03 Company Priorities", "index": 3, "title": "Company Priorities", "role": "component", "purpose": "The canonical ordered list of active company priorities and deferred initiatives." },
+    { "id": "04 Decision Management", "index": 4, "title": "Decision Management", "role": "decision_management", "purpose": "Govern company-level decision creation, evidence, approval, propagation, and review." },
+    { "id": "05 Founder Approval", "index": 5, "title": "Founder Approval", "role": "founder_approval", "purpose": "Govern all items requiring explicit founder approval." },
+    { "id": "06 Resource Allocation", "index": 6, "title": "Resource Allocation", "role": "component", "purpose": "Set resource direction across time, money, capacity, and strategic attention." },
+    { "id": "07 Cross-System Governance", "index": 7, "title": "Cross-System Governance", "role": "component", "purpose": "Define how Executive aligns and resolves conflicts among Business Systems." },
+    { "id": "08 Risk Management", "index": 8, "title": "Risk Management", "role": "component", "purpose": "Identify, score, assign, monitor, and resolve material company risks." },
+    { "id": "09 Executive Reviews", "index": 9, "title": "Executive Reviews", "role": "component", "purpose": "Define daily, weekly, monthly, quarterly, and annual Executive reviews." },
+    { "id": "10 Company Health", "index": 10, "title": "Company Health", "role": "component", "purpose": "Summarize strategic, product, operational, financial, customer, and technical health." },
+    { "id": "11 Metrics", "index": 11, "title": "Metrics", "role": "metrics", "purpose": "" },
+    { "id": "12 Jobs", "index": 12, "title": "Jobs", "role": "jobs", "purpose": "" },
+    { "id": "13 Automations", "index": 13, "title": "Automations", "role": "automations", "purpose": "" },
+    { "id": "14 Knowledge", "index": 14, "title": "Knowledge", "role": "knowledge", "purpose": "" },
+    { "id": "15 Decisions", "index": 15, "title": "Decisions", "role": "decisions", "purpose": "" },
+    { "id": "16 Improvements", "index": 16, "title": "Improvements", "role": "improvements", "purpose": "" },
+    { "id": "17 Archive", "index": 17, "title": "Archive", "role": "archive", "purpose": "" }
   ]
 }

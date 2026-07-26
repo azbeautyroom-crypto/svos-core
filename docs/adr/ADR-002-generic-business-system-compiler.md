@@ -52,10 +52,18 @@ The compiler derives folder creation, artifact placement, the Control Center Sys
 
 Executive output must not change. A per-file SHA-256 **golden snapshot** of the current Executive subtree was captured before the refactor; after the refactor + Executive migration, the recompiled Executive subtree is **byte-identical** (55/55 files). This is the acceptance gate for Stage 1.
 
-# Rollout
+# Rollout (status: complete)
 
-- **Stage 1 (this ADR's commit):** generic compiler + `executive.system.json` migration + byte-identical proof + validation + smoke. Passed.
-- **Stage 2:** `operations.system.json` migration to the folder object model + Operating System Protocol and Approval Rules knowledge objects + validation + smoke. Executive parity re-verified.
+- **Stage 1 — committed (`439e975`):** generic compiler + `executive.system.json` migration + byte-identical proof (55/55) + validation + smoke. Passed.
+- **Stage 2 — committed (`bb99a6e`):** `operations.system.json` (BS-002) migrated to the folder object model + Operating System Protocol and Approval Rules knowledge objects + validation + smoke. Executive parity re-verified.
+
+## Post-adoption additions (committed, founder-approved)
+
+- **Decision-registry fallback:** a system with no `decision_management` folder folds its Decision Registry into its `decisions` folder (Operations); Executive unchanged.
+- **Overridable charter wording:** optional system-level `operating_boundary` / `success_condition` (defaults reproduce Executive; Operations overrides them).
+- **Project Registry** generated at `06 Registry/Project Registry.md` from copied Project inputs; **`referenced-external`** knowledge-source convention (non-resolving by design) — commit `f8d1138`.
+- **Per-system byte-identical golden regression tests** (`tests/goldens/001.sha`, `002.sha`) — commit `1e47d2a`.
+- **Per-system anatomy retained** (Option A, founder-approved 2026-07-26); no shared-shell standard adopted.
 
 # Validation Required
 

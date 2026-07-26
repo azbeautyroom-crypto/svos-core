@@ -7,12 +7,12 @@ Owner: Founder
 |---|---|---|---|---|
 | B1 | SVOS Core Specification | Complete | 1.0.0 | Committed and pushed |
 | B2 | Template Library | Complete | 1.0.0 | Eight template packages committed and pushed |
-| B3 | Compiler Engine | Active | 1.0.0 | **No longer skipped.** Adopted as the compiler architecture via ADR-001 |
+| B3 | Compiler Engine | Active | 1.0.0 | **No longer skipped.** Adopted as the compiler architecture via ADR-001; generalized to a folder object model via ADR-002 |
 | B4 | Validation and Release Management | Complete | 1.0.0 | Committed and pushed |
-| I1 | Canonical SessionVue Inputs | In Progress | 1.0.0 | company-brain authored; Projects and global Jobs inputs incomplete |
-| 2.1 | Executive System | Compiler-validated | 1.0.0 | Executive compiler path validated; directly-authored tree retired |
-| 2.2 | Operations System | Not Started | — | Follows Executive |
-| 2.3 | Marketing System | Not Started | — | Follows Operations |
+| I1 | Canonical SessionVue Inputs | In Progress | 1.0.0 | company-brain + two Projects authored and committed; global Jobs input `NOT IN SOURCE` |
+| 2.1 | Executive System | Compiler-built (review) | 1.0.0 | BS-001; compiled via generic compiler; byte-identical golden test; directly-authored tree retired |
+| 2.2 | Operations System | Compiler-built (review) | 1.0.0 | BS-002; compiled via generic compiler (ADR-002); golden test; committed |
+| 2.3 | Marketing System | Not Started | — | Next; approved to build under ADR-002 (Option A) |
 | 2.4 | Product System | Not Started | — | Follows Marketing |
 | 2.5 | Engineering System | Not Started | — | Follows Product |
 
@@ -24,4 +24,13 @@ Owner: Founder
 - **`generated/sessionvue-os/` is reproducible, disposable output** — gitignored, never committed inside svos-core.
 - **Generated files must not be edited manually** — correct the input/template/compiler and recompile.
 - **The Executive compiler path is validated** — compile, generated-output validation, and smoke tests all pass; parity with the retired directly-authored tree is confirmed (see [ADR-001 parity report](adr/ADR-001-parity-report.md)).
-- **Full Projects and global Jobs inputs remain incomplete** — `inputs/sessionvue/projects/` and `inputs/sessionvue/jobs/` are checkpoint stubs marked `NOT IN SOURCE`.
+- **Global Jobs input remains incomplete** — `inputs/sessionvue/jobs/` is a checkpoint stub marked `NOT IN SOURCE`. (Projects input is authored: two active projects.)
+
+# ADR-002 Record — Generic Business-System Compiler (2026-07-26)
+
+- **[ADR-002](adr/ADR-002-generic-business-system-compiler.md)** generalized the compiler to a single per-system **folder object model** (`id, index, title, role, purpose`); each Business System declares its own folder anatomy.
+- **Executive (BS-001)** was migrated to declare its anatomy; output proven **byte-identical** (55/55).
+- **Operations (BS-002)** was authored and compiled under this model with its own 20-folder anatomy; Executive parity re-verified.
+- **Project Registry** is generated at `06 Registry/Project Registry.md`; external knowledge references are marked `referenced-external` (non-resolving by design).
+- **Per-system anatomy retained** (Option A, founder-approved); no shared-shell standard adopted.
+- **Regression tests** lock both systems' output via byte-identical golden baselines (`tests/goldens/`).

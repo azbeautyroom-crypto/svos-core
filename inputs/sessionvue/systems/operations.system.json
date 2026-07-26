@@ -45,11 +45,11 @@
     { "path": "04 Knowledge/Company/Founder Directives.md", "label": "Founder Directives", "status": "present" },
     { "path": "04 Knowledge/Company/Operating System Protocol.md", "label": "Operating System Protocol", "status": "present" },
     { "path": "04 Knowledge/Company/Approval Rules.md", "label": "Approval Rules", "status": "present" },
-    { "path": "contracts/EXECUTION_CONTRACT.md", "label": "Execution Contract", "status": "present" },
+    { "path": "contracts/EXECUTION_CONTRACT.md", "label": "Execution Contract", "status": "referenced-external" },
     { "path": "06 Registry/Job Registry.md", "label": "Job Registry", "status": "present" },
     { "path": "06 Registry/Business System Registry.md", "label": "System Registry", "status": "present" },
     { "path": "HQ/Active Priorities.md", "label": "Active Priorities", "status": "referenced-external" },
-    { "path": "06 Registry/Project Registry.md", "label": "Project Registry", "status": "NOT IN SOURCE" }
+    { "path": "06 Registry/Project Registry.md", "label": "Project Registry", "status": "present" }
   ],
   "jobs": [
     "Capture Incoming Request",

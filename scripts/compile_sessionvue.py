@@ -103,6 +103,42 @@ def role_folder(system: dict[str, Any], role: str) -> str | None:
     return None
 
 
+def read_frontmatter(path: Path) -> dict[str, str]:
+    """Parse a copied input's simple `key: value` YAML frontmatter (no nesting)."""
+    text = path.read_text(encoding="utf-8")
+    if not text.startswith("---\n"):
+        return {}
+    end = text.find("\n---", 4)
+    if end == -1:
+        return {}
+    fields: dict[str, str] = {}
+    for line in text[4:end].splitlines():
+        if line and not line.startswith(" ") and ":" in line:
+            key, _, value = line.partition(":")
+            fields[key.strip()] = value.strip()
+    return fields
+
+
+def register_projects(output: Path, registries: dict[str, list[list[str]]]) -> None:
+    """Register the copied Project inputs (03 Projects) into the global Project Registry.
+
+    Projects have no source IDs; the compiler assigns deterministic PRJ-NNN by sorted path.
+    Nothing is inferred beyond that structural identifier — title/status/owner come from
+    the project's own frontmatter.
+    """
+    projects_root = output / "03 Projects"
+    if not projects_root.exists():
+        return
+    files = sorted(p for p in projects_root.rglob("*.md") if p.name != "README.md")
+    for idx, path in enumerate(files, 1):
+        fm = read_frontmatter(path)
+        project_id = f"PRJ-{idx:03d}"
+        title = fm.get("title", path.stem)
+        status = fm.get("status", "")
+        owner = fm.get("owner", "")
+        registries["projects"].append([project_id, title, status, owner, path.relative_to(output).as_posix()])
+
+
 def render_job(system: dict[str, Any], job_name: str, index: int) -> str:
     job_id = f"{system['system_id']}-JOB-{index:03d}"
     label = system_label(system)
@@ -528,6 +564,7 @@ def render_global_registries(output: Path, registries: dict[str, list[list[str]]
     reg_root.mkdir(parents=True, exist_ok=True)
     specs = {
         "Business System Registry.md": ("system_id", "name", "status", "owner", "control_center", registries["systems"]),
+        "Project Registry.md": ("project_id", "title", "status", "owner", "file", registries["projects"]),
         "Job Registry.md": ("job_id", "name", "system", "status", "file", registries["jobs"]),
         "Metric Registry.md": ("metric_id", "name", "system", "status", "file", registries["metrics"]),
         "Automation Registry.md": ("automation_id", "name", "system", "status", "file", registries["automations"]),
@@ -606,10 +643,11 @@ def main() -> int:
     for item in contract["copy_inputs"]:
         copy_tree(input_root / item["from"], output / item["to"])
 
-    registries: dict[str, list[list[str]]] = {"systems": [], "jobs": [], "metrics": [], "automations": []}
+    registries: dict[str, list[list[str]]] = {"systems": [], "jobs": [], "metrics": [], "automations": [], "projects": []}
     business_root = output / contract["generated_business_systems_root"]
     for system_file in system_files:
         compile_system(system_file, business_root, registries)
+    register_projects(output, registries)
     render_global_registries(output, registries)
 
     validation = validate_output(output)

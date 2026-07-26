@@ -1,0 +1,77 @@
+{
+  "system_id": "BS-001",
+  "folder_name": "001 Executive System",
+  "name": "Executive System",
+  "status": "review",
+  "owner": "founder",
+  "purpose": "Ensure every company-level decision advances SessionVue toward its mission while keeping all Business Systems aligned.",
+  "authority": [
+    "Own company priorities and strategic alignment",
+    "Approve strategic decisions and company-wide policies",
+    "Resolve cross-system conflicts",
+    "Set resource-allocation direction",
+    "Review company health and material risk"
+  ],
+  "out_of_scope": [
+    "Executing department work directly",
+    "Creating marketing assets",
+    "Writing production code",
+    "Operating customer support queues",
+    "Bypassing Operations for execution"
+  ],
+  "connected_systems": [
+    "Operations", "Marketing", "Product", "Engineering", "Analytics",
+    "Sales & Partnerships", "Finance", "Customer Success", "Support"
+  ],
+  "knowledge_sources": [
+    "04 Knowledge/Company/Company Identity.md",
+    "04 Knowledge/Company/Mission.md",
+    "04 Knowledge/Company/Vision.md",
+    "04 Knowledge/Company/Business Model.md",
+    "04 Knowledge/Company/Founder Directives.md",
+    "04 Knowledge/Memberships/Membership Brain.md",
+    "04 Knowledge/Products/Product Brain.md",
+    "04 Knowledge/Integrations/Integration Brain.md"
+  ],
+  "jobs": [
+    "Review Company Health",
+    "Review Executive KPIs",
+    "Prioritize Projects",
+    "Approve Strategic Decision",
+    "Review Business System Status",
+    "Review Company Risks",
+    "Approve Company Policy",
+    "Review Launch Readiness",
+    "Run Weekly Executive Review",
+    "Prepare Founder Brief",
+    "Review Strategic Initiative",
+    "Record Founder Decision",
+    "Resolve Cross-System Conflict",
+    "Prepare Quarterly Plan",
+    "Propagate Executive Decision"
+  ],
+  "metrics": [
+    "Strategic Priority Completion Rate",
+    "Founder Approval Aging",
+    "Critical Risk Aging",
+    "Cross-System Blocker Aging",
+    "Launch Readiness",
+    "Company Objective Progress",
+    "Decision Propagation Completeness",
+    "Project Approval Turnaround",
+    "Company Health Review Completion",
+    "Risk Review Completion",
+    "Mission Alignment Pass Rate"
+  ],
+  "automations": [
+    "Weekly Executive Brief",
+    "Founder Approval Queue Digest",
+    "Critical KPI Threshold Alert",
+    "Critical Risk Alert",
+    "Monthly Company Review Preparation",
+    "Approval Aging Alert",
+    "Cross-System Blocker Alert",
+    "Decision Propagation Check",
+    "Quarterly Planning Prompt"
+  ]
+}

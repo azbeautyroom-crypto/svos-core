@@ -1,2 +1,14 @@
+# macOS
 .DS_Store
 **/.DS_Store
+__MACOSX/
+**/__MACOSX/
+
+# Obsidian vault config
+.obsidian/
+**/.obsidian/
+
+# Generated compiler output — reproducible, disposable; never committed inside svos-core.
+# (generated/README.md stays tracked to document the folder's purpose.)
+generated/sessionvue-os/
+generated/001 Executive System/

@@ -1,0 +1,17 @@
+{
+  "contract_version": "1.0.0",
+  "company_id": "sessionvue",
+  "input_root": "inputs/sessionvue",
+  "output_root": "generated/sessionvue-os",
+  "copy_inputs": [
+    {"from": "company-brain", "to": "04 Knowledge"},
+    {"from": "projects", "to": "03 Projects"},
+    {"from": "jobs", "to": "05 Jobs"}
+  ],
+  "systems_root": "systems",
+  "generated_business_systems_root": "02 Business Systems",
+  "registry_root": "06 Registry",
+  "clean_output_before_compile": true,
+  "fail_on_unresolved_links": false,
+  "fail_on_missing_required_sources": true
+}

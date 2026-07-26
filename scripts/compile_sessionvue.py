@@ -370,6 +370,9 @@ def compile_system(system_path: Path, business_root: Path, registries: dict[str,
     decisions_id = role_folder(system, "decisions")
     improvements_id = role_folder(system, "improvements")
     archive_id = role_folder(system, "archive")
+    # A system may fold the decision registry into its decisions folder rather than a
+    # dedicated decision-management folder. Executive keeps "04 Decision Management".
+    decision_reg_id = decision_mgmt_id or decisions_id
 
     source_links = "\n".join(f"- {wiki(ks_path(source))}" for source in system["knowledge_sources"])
     connected = "\n".join(f"- {cs_name(name)}" for name in system.get("connected_systems", []))
@@ -393,7 +396,7 @@ def compile_system(system_path: Path, business_root: Path, registries: dict[str,
 - Automation level: 0
 - Active projects: none connected
 - Open approvals: see [[../{approval_id}/APPROVAL REGISTRY]]
-- Open decisions: see [[../{decision_mgmt_id}/DECISION REGISTRY]]
+- Open decisions: see [[../{decision_reg_id}/DECISION REGISTRY]]
 - Current blocker: metrics and live integrations require founder configuration
 
 ## Authority
@@ -417,6 +420,8 @@ def compile_system(system_path: Path, business_root: Path, registries: dict[str,
 Founder reviews the Charter, then configures the first {label} metrics and activates the first {label} Job.
 """)
 
+    operating_boundary = system.get("operating_boundary", f"{label} decides direction, priorities, company-level policies, and strategic approvals. Operations routes and orchestrates execution. Departments perform their specialized work.")
+    success_condition = system.get("success_condition", "Company priorities are explicit, strategic decisions are documented, risks are visible, approvals are controlled, and execution is routed to the correct Business Systems.")
     write(root / charter_id / "CHARTER.md", f"""{frontmatter(f"{system['name']} Charter", 'business-system-charter', status=system['status'], owner=system['owner'], system_id=system['system_id'])}
 
 # Charter
@@ -435,11 +440,11 @@ Founder reviews the Charter, then configures the first {label} metrics and activ
 
 ## Operating Boundary
 
-{label} decides direction, priorities, company-level policies, and strategic approvals. Operations routes and orchestrates execution. Departments perform their specialized work.
+{operating_boundary}
 
 ## Success Condition
 
-Company priorities are explicit, strategic decisions are documented, risks are visible, approvals are controlled, and execution is routed to the correct Business Systems.
+{success_condition}
 """)
 
     for folder in folders:
@@ -480,7 +485,7 @@ The record has an owner, source links, status, destination, and next action.
 """)
 
     # Registries and index files
-    write(root / decision_mgmt_id / "DECISION REGISTRY.md", "# Decision Registry\n\n| Decision ID | Title | Status | Owner | Record |\n|---|---|---|---|---|\n")
+    write(root / decision_reg_id / "DECISION REGISTRY.md", "# Decision Registry\n\n| Decision ID | Title | Status | Owner | Record |\n|---|---|---|---|---|\n")
     write(root / approval_id / "APPROVAL REGISTRY.md", "# Approval Registry\n\n| Approval ID | Item | Status | Requested | Decision |\n|---|---|---|---|---|\n")
 
     job_rows = []

@@ -1,0 +1,18 @@
+template_id: TPL-AUTO-001
+name: Automation
+object_type: automation
+template_version: 1.0.0
+os_version: 1.0.0
+spec_version: 1.0.0
+status: locked
+owner: founder
+required_files:
+  - template.md
+required_folders:
+  []
+validation:
+  yaml_required: true
+  owner_required: true
+  source_of_truth_required: true
+  version_metadata_required: true
+  registry_entry_required: true

@@ -1,0 +1,31 @@
+template_id: TPL-BS-001
+name: Business System
+object_type: business-system
+template_version: 1.0.0
+os_version: 1.0.0
+spec_version: 1.0.0
+status: locked
+owner: founder
+required_files:
+  - template.md
+required_folders:
+  - 00 Control Center
+  - 01 Purpose
+  - 02 Scope
+  - 03 Policies
+  - 04 Workflows
+  - 05 Jobs
+  - 06 Templates
+  - 07 Metrics
+  - 08 Automations
+  - 09 Integrations
+  - 10 Knowledge
+  - 11 Decisions
+  - 12 Improvements
+  - 13 Archive
+validation:
+  yaml_required: true
+  owner_required: true
+  source_of_truth_required: true
+  version_metadata_required: true
+  registry_entry_required: true

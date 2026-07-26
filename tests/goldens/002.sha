@@ -1,0 +1,57 @@
+e4c40405f691f6dd45c239b96e6914cb8dbbd7d313fb47baa73b8cffaafd387b  00 Control Center/CONTROL CENTER.md
+e70bb0f963bfcf3cff66d937ade095aa987b544a8079ddaefb36d8d243cee76c  01 Charter/CHARTER.md
+357906663d494cf72a55c43cd721d7d5dd5f2542636dfc37ce322bcee02f2325  02 Intake/INTAKE.md
+c6979cf7c2a0c7a7cc6c6f1072dc6c8a02aa0d3dc51e0dbab408477e300b012c  03 Routing/ROUTING.md
+9c3a47e790afcca81b9e6fac7690f340fc1ee3ce1f2b2981e2d2143cb58cc5d6  04 Project Activation/PROJECT ACTIVATION.md
+0c907fe1c22de66d669429facd36234090ff63363dd0b7753c54224efeaf13cd  05 Job Orchestration/JOB ORCHESTRATION.md
+367cf20cbfbf2e9e0f188eaf6c795b58666a540ff2b26076cf14b16cbe90585d  06 Dependencies/DEPENDENCIES.md
+e3f33c70d83307945fdb283dbc65250a3514f828cb0a8506bffe56ee86fe5e2a  07 Approval Routing/APPROVAL REGISTRY.md
+a78a35b36e6478fb9ca53ae93a7e4f714ee657b3374466d813a54440ec164014  07 Approval Routing/APPROVAL ROUTING.md
+e1cfc3424f94f12577a45f693425fc394c35a305a3009f3f0c236b28e554417e  08 Documentation/DOCUMENTATION.md
+7a99d78162d42cd999cc4e4411b2141c46d5e845c116f5fabfe85e7e9258b395  09 System Handoffs/SYSTEM HANDOFFS.md
+851e6bc91fd72018c5ba39618af12b7901149afe257db344f75f010a31499c73  10 Work Tracking/WORK TRACKING.md
+17363868d87fb4a670600f943a0ff14577a00bde9658c5e5c3842464b279808a  11 Exceptions/EXCEPTIONS.md
+5fda4c9c34447f914cbb040aca3081d4217c69adb245ebd4369d7952042577d0  12 Reviews/REVIEWS.md
+1122d6d27de29920bc062fd2cf5f1a2835abd8667b3019345b84345a0a16aa43  13 Metrics/001 — Intake Routing Accuracy.md
+03fca0476f9614a36d4459ffb91a21c1eac317c3aa5661d8297cfadb2220a927  13 Metrics/002 — Request-to-Owner Time.md
+d11a98849e3711f09de30f2b7149531cbe66a288a0592cd2e21338b27fa9106c  13 Metrics/003 — Project Activation Time.md
+e7d1394134218776fbb3c4eaaebc5f8b725b7d0ba5ed8daef7995690966cf347  13 Metrics/004 — Blocked Work Aging.md
+a186e7b5c192ccdd61a0e198652fe4a00e9d35473356ff72a335b8ace2cd17c9  13 Metrics/005 — Approval Queue Aging.md
+16f43927e5c7a07f4e6e2a51b0bc670b3074940fbba588ac15663414ded0816d  13 Metrics/006 — Documentation Completion Rate.md
+3e7cd30e836a35f7dc733f5c765457e6a091f42798348adba6dcce4a7c6438cf  13 Metrics/007 — Handoff Completion Rate.md
+73cfa423e7cc5401c1844399d4b7a14f2351306852b64f972a6372ed2ae72f9a  13 Metrics/008 — Project Closure Completeness.md
+f4167d3e1d6bcc13a2bb1b9ce5fe3945114be6dee0dd63944b6ae81ee766a4e7  13 Metrics/009 — Reopened Work Rate.md
+19a53c165521c86e328e3eb1a6b04853336d0b28cc060683c1cd84a52122d71d  13 Metrics/010 — Operations Review Completion.md
+47d806efdd901016bc56ec79c20db7aa525b3c4185ca4f2d99d74f0f07b41563  13 Metrics/METRIC REGISTRY.md
+446b88a466ce945f4b833410996bc7e284579719503749276f6e342c2ced9dc1  14 Jobs/001 — Capture Incoming Request.md
+cf4f783b2c9c69398f60c8fec4c024f9d380a50ed3cc40818132b7220b9fbcd5  14 Jobs/002 — Categorize Request.md
+8b8b4cfa179dae710c77795ed779bff635007b54fc8851530cfdf8618281aca0  14 Jobs/003 — Assign Owning System.md
+5a4c09585df48c4214f471c49490fb5ec42a7639594dfc4443270f2237e44fc8  14 Jobs/004 — Identify Dependencies.md
+b67f4adbb4c2caad877c894d8a99def02f6dd6e30cf73e5ad5e0f458eaf37f7b  14 Jobs/005 — Activate Project.md
+36a5e197a611ef4132989426777dc886f7de9847f65e9efa8556abac0e3d317b  14 Jobs/006 — Build Project Checklist.md
+825d2dc58fc5ad1e66c412853522064c7d5959523412647b3d8f8565afe0a75c  14 Jobs/007 — Route Required Job.md
+b7db32892af723fe561c48a0e4db991cc1ac0d2eadd103b8ffa976abaf89279d  14 Jobs/008 — Track Work State.md
+3c81e6bb11024cee75c6cfdebc42dad61c9921cba87779ce0e812128663f5ec3  14 Jobs/009 — Route Founder Approval.md
+8ddf24498726e14f7e3f43519beadefa0406af7d587584e798b9f773a792df10  14 Jobs/010 — Verify Documentation Updated.md
+988a91d079c79f9abe797c0b30b6da3a694079a7606419921ae04f5bff358768  14 Jobs/011 — Coordinate System Handoff.md
+1d1aafb89318ccafb7c161cabc05db800ee1b1a4cffa2a05c721d3b7b173a338  14 Jobs/012 — Escalate Blocked Work.md
+10bf004ae77d6b9ac033fb2324922c8207fe11205f22fe379b0e0512f348fcc8  14 Jobs/013 — Close Completed Project.md
+96d8dd78a9c69d949171beb4c1d515e6116159742b516e9a9c1768c9c0b1eefa  14 Jobs/014 — Run Operations Review.md
+f992a9a86844c7a1cf5382c9535bebe072fcac8f885f60e975e9154773ef0a1c  14 Jobs/015 — Capture Process Improvement.md
+1002b032c440a526c5dbd2c01a9c8cdd0617da5c3b580c52fcdf65dbbd00de08  14 Jobs/JOB REGISTRY.md
+9bcfe21857a592b4803431c072e7a7f415b0093808626025fe686bc19d6d3fd1  15 Automations/001 — New Request Intake Router.md
+2370d2cd7eb019416ed5d90bf6eb4fec2dbacc1abe9138158a716ed08cff1538  15 Automations/002 — Unassigned Work Alert.md
+b2ce1324866baeb06c7e5604ab714b52aa8af6c91dbc270d2b458d328cea54cd  15 Automations/003 — Dependency Blocker Alert.md
+b307ea63e453475e1cb060029e8ad7e993d54a377d7a7837866f1d5a1fced3d0  15 Automations/004 — Founder Approval Queue Digest.md
+e457b5875a15ba28e951964be7727181b7408bf8cbb380b367393a36a737f982  15 Automations/005 — Stale Work Alert.md
+6766a7c5029ff8a403d07b05e51b80a0b8e998b95afca65845336f512ea44b87  15 Automations/006 — Missing Documentation Alert.md
+7f7c268cbf6ebf7da6429b835617d8283f69f3cf2b103a80782524d4a10f7550  15 Automations/007 — Handoff Reminder.md
+76f075036d691e0727a413864c24a76e49173efb9c9968ae33bc9e8160efd88f  15 Automations/008 — Project Closure Check.md
+912998b3f6fe2340cd5d2f3f5ac08608bb293eacb88e2f848a0cf5ec01283037  15 Automations/009 — Weekly Operations Brief.md
+f4a877e392b3b4a5f2497fd81b23ba02b66602db49dd0aa9b11068aa02e8ac11  15 Automations/010 — Improvement Capture Prompt.md
+69b1fceb0e9e650d88032fc55a55f3261c841ab345975af8ad956a13acab9a56  15 Automations/AUTOMATION REGISTRY.md
+674adad0d95f173fa6f7ea5a9955e4e9bf8feae1de50d1b9fb4c1e932ab4abfd  16 Knowledge/KNOWLEDGE MAP.md
+2ac0a6cd24246d628f1d045b1f43d093557ce9d6f05f52b2179adfdb22ed35e6  17 Decisions/DECISION REGISTRY.md
+bc5c753ca1077b61669179d31ad7111e5e1c9a2e28d2bad660395383ac44f70c  17 Decisions/DECISIONS.md
+cf75977cd9b56bde975212e985ea75d86378d1c0b2a2a3eceb6979e7a710461f  18 Improvements/IMPROVEMENTS.md
+2d6837a22e81f30fc64de13a79ed6a2804596db24348e04f0562be16c7f99221  19 Archive/README.md

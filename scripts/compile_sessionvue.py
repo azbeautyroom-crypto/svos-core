@@ -78,6 +78,17 @@ def cs_name(item: Any) -> str:
     return item["name"] if isinstance(item, dict) else item
 
 
+def obj_name(item: Any) -> str:
+    """An executable object (job/metric/automation) may be a name string or a
+    definition object {name, ...} (ADR-004 / EODM). Return its name."""
+    return item["name"] if isinstance(item, dict) else item
+
+
+def obj_def(item: Any) -> dict[str, Any]:
+    """The EODM definition for an executable object; empty for a name-only string."""
+    return item if isinstance(item, dict) else {}
+
+
 # Special generated document per folder role; other roles use the folder title uppercased.
 ROLE_PRIMARY_DOC = {
     "control_center": "CONTROL CENTER",
@@ -526,6 +537,7 @@ The record has an owner, source links, status, destination, and next action.
 
     job_rows = []
     for idx, job_name in enumerate(system["jobs"], 1):
+        job_name = obj_name(job_name)
         filename = f"{idx:03d} — {job_name}.md"
         write(root / jobs_id / filename, render_job(system, job_name, idx))
         job_id = f"{system['system_id']}-JOB-{idx:03d}"
@@ -535,6 +547,7 @@ The record has an owner, source links, status, destination, and next action.
 
     metric_rows = []
     for idx, metric_name in enumerate(system["metrics"], 1):
+        metric_name = obj_name(metric_name)
         filename = f"{idx:03d} — {metric_name}.md"
         write(root / metrics_id / filename, render_metric(system, metric_name, idx))
         metric_id = f"{system['system_id']}-MET-{idx:03d}"
@@ -544,6 +557,7 @@ The record has an owner, source links, status, destination, and next action.
 
     automation_rows = []
     for idx, automation_name in enumerate(system["automations"], 1):
+        automation_name = obj_name(automation_name)
         filename = f"{idx:03d} — {automation_name}.md"
         write(root / automations_id / filename, render_automation(system, automation_name, idx))
         auto_id = f"{system['system_id']}-AUTO-{idx:03d}"

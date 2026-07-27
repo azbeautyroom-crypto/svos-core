@@ -51,6 +51,7 @@
     { "path": "04 Knowledge/Marketing/Messaging.md", "label": "Messaging", "status": "present" },
     { "path": "04 Knowledge/Marketing/Brand.md", "label": "Brand", "status": "present" },
     { "path": "04 Knowledge/Marketing/Positioning.md", "label": "Positioning", "status": "present" },
+    { "path": "04 Knowledge/Marketing/Media Operating System.md", "label": "Media Operating System", "status": "present" },
     { "path": "HQ/Active Priorities.md", "label": "Active Priorities", "status": "referenced-external" },
     { "path": "06 Registry/Analytics Metrics.md", "label": "Canonical Metrics (Analytics)", "status": "NOT IN SOURCE" }
   ],

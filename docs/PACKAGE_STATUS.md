@@ -34,3 +34,9 @@ Owner: Founder
 - **Project Registry** is generated at `06 Registry/Project Registry.md`; external knowledge references are marked `referenced-external` (non-resolving by design).
 - **Per-system anatomy retained** (Option A, founder-approved); no shared-shell standard adopted.
 - **Regression tests** lock both systems' output via byte-identical golden baselines (`tests/goldens/`).
+
+# ADR-003 Record — SVOS Constitution Adopted (2026-07-26) · SVOS Core v1 complete
+
+- **[SVOS Constitution](SVOS_CONSTITUTION.md)** adopted by **[ADR-003](adr/ADR-003-adopt-svos-constitution.md)** as the highest governing document. Governing hierarchy: Founder → SVOS Constitution → Operating Doctrine → Specification Layer (LOCKED specs + Execution Contract) → Business Systems → Executable Objects → Execution → Operating State; ADRs are the amendment ledger.
+- **Terminology reconciled** (no implementation change): Business Systems are ownership boundaries, not departments; SVOS is tenant-agnostic (SessionVue = first instance); CONTRACT-001 authority references resolve to the SVOS Constitution + Operating Doctrine.
+- **SVOS Core v1 is complete.** No further architectural work begins automatically; **Marketing (BS-003)** is the next capability and begins only as a separate founder-approved architecture session.

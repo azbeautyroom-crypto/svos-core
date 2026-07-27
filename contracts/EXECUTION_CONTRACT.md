@@ -45,8 +45,8 @@ This contract is subordinate only to:
 
 1. current founder instruction;
 2. locked founder decisions;
-3. the root AI Operating Manual;
-4. the Architecture Constitution.
+3. the SVOS Constitution;
+4. the Operating Doctrine.
 
 No Business System, Project, Job, Workflow, Automation, Metric, Decision, Approval, Knowledge object, or Map may redefine this execution anatomy.
 

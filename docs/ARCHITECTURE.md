@@ -4,6 +4,12 @@ This document describes the architecture as it exists in the repository today. I
 no new architecture; it records what has been approved and committed. Authoritative decisions
 live in the ADRs under `docs/adr/`.
 
+The highest governing document is the **[SVOS Constitution](SVOS_CONSTITUTION.md)** (adopted by
+ADR-003). The governing hierarchy is: Founder → SVOS Constitution → Operating Doctrine →
+Specification Layer (LOCKED specs + Execution Contract) → Business Systems → Executable Objects →
+Execution → Operating State, with ADRs as the amendment ledger and the compiler enforcing the
+Specification Layer.
+
 ## Compile pipeline
 
 ```text

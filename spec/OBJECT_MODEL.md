@@ -81,9 +81,9 @@ Company Brain
 
 ## Business System
 
-Permanent operating department.
+Canonical owner of a bounded domain of company responsibility — the single accountable authority for a defined set of decisions, knowledge, and outcomes. Defined by the responsibility it owns, not by headcount, organizational chart, or whether humans or agents perform the work. Created only when a domain requires a single unambiguous owner (SVOS Constitution, Article VIII).
 
-Examples
+Examples (non-binding)
 
 Executive
 

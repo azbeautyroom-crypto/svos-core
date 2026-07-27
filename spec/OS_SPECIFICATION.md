@@ -8,17 +8,17 @@ Authority: Founder
 
 # Purpose
 
-SVOS (SessionVue Operating System) is the canonical operating system used to design, build, execute, monitor, and continuously improve SessionVue.
+SVOS (SessionVue Operating System) is the canonical, tenant-agnostic operating system used to design, build, execute, monitor, and continuously improve a company operated on it. SessionVue is the first operating instance, not the definition of SVOS.
 
 SVOS does not run the application.
 
-SVOS runs the company.
+SVOS runs the operating instance (the company).
 
 The company is treated as a deterministic operating system composed of knowledge, systems, projects, jobs, workflows, automations, and decisions.
 
-Everything inside SessionVue must compile from this specification.
+Everything inside an operating instance must compile from this specification.
 
-Nothing below this specification may redefine architecture.
+This specification is governed by the SVOS Constitution (`docs/SVOS_CONSTITUTION.md`), which ranks above it. Subject to the Constitution, nothing below this specification may redefine architecture.
 
 ---
 
@@ -83,7 +83,9 @@ Layer 2
 
 Business Systems
 
-Permanent operating departments.
+Canonical owners of bounded domains of company responsibility (ownership boundaries), not departments. A Business System is created only when a domain requires a single unambiguous owner (SVOS Constitution, Article VIII).
+
+Examples (non-binding; created only on genuine ownership need):
 
 Executive
 
@@ -109,7 +111,7 @@ Legal
 
 People
 
-These own HOW work is performed.
+These own the responsibility for a bounded domain of work.
 
 ---
 

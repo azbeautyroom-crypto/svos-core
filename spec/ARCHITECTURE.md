@@ -48,7 +48,7 @@ Business Systems
 
 Purpose
 
-Defines permanent operating departments.
+Defines canonical owners of bounded domains of company responsibility (ownership boundaries), not departments (SVOS Constitution, Article VIII).
 
 Generated.
 

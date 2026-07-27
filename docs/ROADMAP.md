@@ -14,6 +14,7 @@
 
 ## Architecture (committed)
 
+- **SVOS Constitution** ([`docs/SVOS_CONSTITUTION.md`](SVOS_CONSTITUTION.md)) — highest governing document; adopted by **ADR-003**. Marks completion of **SVOS Core v1**. Governing hierarchy: Founder → SVOS Constitution → Operating Doctrine → Specification Layer → Business Systems → Executable Objects → Execution → Operating State.
 - **ADR-001** — compiler architecture adopted; supersedes the B3-skip decision.
 - **ADR-002** — generic Business-System compiler driven by a single per-system folder object model (`id, index, title, role, purpose`); each system declares its own anatomy.
 - `inputs/sessionvue/` is the canonical, hand-authored source of truth.

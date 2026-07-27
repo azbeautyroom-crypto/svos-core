@@ -150,20 +150,40 @@ def register_projects(output: Path, registries: dict[str, list[list[str]]]) -> N
         registries["projects"].append([project_id, title, status, owner, path.relative_to(output).as_posix()])
 
 
-def render_job(system: dict[str, Any], job_name: str, index: int) -> str:
+def render_job(system: dict[str, Any], job: Any, index: int) -> str:
     job_id = f"{system['system_id']}-JOB-{index:03d}"
     label = system_label(system)
+    job_name = obj_name(job)
+    d = obj_def(job)
+    # EODM (ADR-004): each section resolves from the definition, else its current default.
+    required_sources_default = "\n".join(f"- {wiki(ks_path(source))}" for source in system["knowledge_sources"])
+    purpose = d.get("purpose", f"Execute the {label} responsibility named **{job_name}** using verified company sources and visible approval gates.")
+    trigger = d.get("trigger", f"Manual founder request, scheduled {label} review, threshold breach, or routed Operations request.")
+    project = d.get("project", "The active Project that triggered the Job, when applicable.")
+    inputs = d.get("inputs", "- Active company priorities\n- Relevant Project state\n- Relevant Business System status\n- Canonical company Knowledge\n- Current metrics, risks, decisions, and approvals")
+    required_sources = d.get("required_sources", required_sources_default)
+    preconditions = d.get("preconditions", f"- Required sources exist.\n- The request is within {label} scope.\n- Material facts are verified.\n- Founder approval requirements are known.")
+    steps = d.get("execution", f"1. Identify the objective and triggering Project or company condition.\n2. Load canonical Knowledge and current system state.\n3. Verify metrics, risks, open decisions, and dependencies.\n4. Produce the {label} recommendation or review result.\n5. Route execution work to Operations rather than performing department work directly.\n6. Create an Approval or Decision record when required.\n7. Update the {label} Control Center and affected registries.")
+    decision_rules = d.get("decision_logic", "- IF evidence is missing, THEN mark `NOT IN SOURCE` and stop the affected conclusion.\n- IF the request belongs to a department, THEN route it through Operations.\n- IF a locked founder decision conflicts, THEN create a visible Decision request.\n- IF an external state change is required, THEN require Change Control and founder approval.")
+    output = d.get("outputs", f"An {label} review, decision recommendation, priority directive, approval request, or company-health update.")
+    destination = d.get("destinations", f"{label} System, active Project, Decision Registry, Approval Registry, or Operations routing queue.")
+    quality_check = d.get("validation", "- Mission and vision alignment checked\n- Canonical sources linked\n- No unsupported claim\n- Owner and next action explicit\n- Execution correctly routed")
+    approval = d.get("approval", "Founder approval is required for strategic changes, policies, resource-allocation changes, and final company-level decisions.")
+    failure_handling = d.get("exceptions", "Record the blocker, owner, missing source, and exact next action. Do not infer approval.")
+    retry_rule = d.get("retry_rule", "Retry after the missing evidence, approval, or dependency becomes available.")
+    completion = d.get("completion_condition", f"The {label} output is documented, routed, registered, and reflected in the Control Center.")
+    lessons = d.get("improvement_loop", "Record founder corrections that should improve this Job.")
     return f"""{frontmatter(job_name, 'job', status='review', owner=system['owner'], job_id=job_id, governing_system=system['system_id'])}
 
 # {job_name}
 
 ## Purpose
 
-Execute the {label} responsibility named **{job_name}** using verified company sources and visible approval gates.
+{purpose}
 
 ## Trigger
 
-Manual founder request, scheduled {label} review, threshold breach, or routed Operations request.
+{trigger}
 
 ## Owner
 
@@ -175,96 +195,87 @@ Manual founder request, scheduled {label} review, threshold breach, or routed Op
 
 ## Project
 
-The active Project that triggered the Job, when applicable.
+{project}
 
 ## Inputs
 
-- Active company priorities
-- Relevant Project state
-- Relevant Business System status
-- Canonical company Knowledge
-- Current metrics, risks, decisions, and approvals
+{inputs}
 
 ## Required Sources
 
-""" + "\n".join(f"- {wiki(ks_path(source))}" for source in system["knowledge_sources"]) + f"""
+{required_sources}
 
 ## Preconditions
 
-- Required sources exist.
-- The request is within {label} scope.
-- Material facts are verified.
-- Founder approval requirements are known.
+{preconditions}
 
 ## Steps
 
-1. Identify the objective and triggering Project or company condition.
-2. Load canonical Knowledge and current system state.
-3. Verify metrics, risks, open decisions, and dependencies.
-4. Produce the {label} recommendation or review result.
-5. Route execution work to Operations rather than performing department work directly.
-6. Create an Approval or Decision record when required.
-7. Update the {label} Control Center and affected registries.
+{steps}
 
 ## Decision Rules
 
-- IF evidence is missing, THEN mark `NOT IN SOURCE` and stop the affected conclusion.
-- IF the request belongs to a department, THEN route it through Operations.
-- IF a locked founder decision conflicts, THEN create a visible Decision request.
-- IF an external state change is required, THEN require Change Control and founder approval.
+{decision_rules}
 
 ## Output
 
-An {label} review, decision recommendation, priority directive, approval request, or company-health update.
+{output}
 
 ## Destination
 
-{label} System, active Project, Decision Registry, Approval Registry, or Operations routing queue.
+{destination}
 
 ## Quality Check
 
-- Mission and vision alignment checked
-- Canonical sources linked
-- No unsupported claim
-- Owner and next action explicit
-- Execution correctly routed
+{quality_check}
 
 ## Approval
 
-Founder approval is required for strategic changes, policies, resource-allocation changes, and final company-level decisions.
+{approval}
 
 ## Failure Handling
 
-Record the blocker, owner, missing source, and exact next action. Do not infer approval.
+{failure_handling}
 
 ## Retry Rule
 
-Retry after the missing evidence, approval, or dependency becomes available.
+{retry_rule}
 
 ## Completion
 
-The {label} output is documented, routed, registered, and reflected in the Control Center.
+{completion}
 
 ## Lessons
 
-Record founder corrections that should improve this Job.
+{lessons}
 """
 
 
-def render_metric(system: dict[str, Any], metric_name: str, index: int) -> str:
+def render_metric(system: dict[str, Any], metric: Any, index: int) -> str:
     metric_id = f"{system['system_id']}-MET-{index:03d}"
     label = system_label(system)
+    metric_name = obj_name(metric)
+    d = obj_def(metric)
+    definition = d.get("definition", "`NOT IN SOURCE — define the exact measurement.`")
+    mtype = d.get("type", f"{label} system-health or outcome metric.")
+    formula = d.get("formula", "`NOT IN SOURCE`")
+    source = d.get("source", "`NOT IN SOURCE`")
+    cadence = d.get("cadence", "`NOT IN SOURCE`")
+    target = d.get("target", "`NOT IN SOURCE`")
+    warning = d.get("warning_threshold", "`NOT IN SOURCE`")
+    failure = d.get("failure_threshold", "`NOT IN SOURCE`")
+    action = d.get("action", f"Route threshold breaches to {label} review, Monitoring, and the owning Business System.")
     return f"""{frontmatter(metric_name, 'metric', status='review', owner=system['owner'], metric_id=metric_id, governing_system=system['system_id'])}
 
 # {metric_name}
 
 ## Definition
 
-`NOT IN SOURCE — define the exact measurement.`
+{definition}
 
 ## Type
 
-{label} system-health or outcome metric.
+{mtype}
 
 ## System
 
@@ -272,27 +283,27 @@ def render_metric(system: dict[str, Any], metric_name: str, index: int) -> str:
 
 ## Formula
 
-`NOT IN SOURCE`
+{formula}
 
 ## Source
 
-`NOT IN SOURCE`
+{source}
 
 ## Cadence
 
-`NOT IN SOURCE`
+{cadence}
 
 ## Target
 
-`NOT IN SOURCE`
+{target}
 
 ## Warning
 
-`NOT IN SOURCE`
+{warning}
 
 ## Failure
 
-`NOT IN SOURCE`
+{failure}
 
 ## Owner
 
@@ -300,20 +311,39 @@ def render_metric(system: dict[str, Any], metric_name: str, index: int) -> str:
 
 ## Action
 
-Route threshold breaches to {label} review, Monitoring, and the owning Business System.
+{action}
 """
 
 
-def render_automation(system: dict[str, Any], automation_name: str, index: int) -> str:
+def render_automation(system: dict[str, Any], automation: Any, index: int) -> str:
     automation_id = f"{system['system_id']}-AUTO-{index:03d}"
     label = system_label(system)
+    automation_name = obj_name(automation)
+    d = obj_def(automation)
+    purpose = d.get("purpose", f"Prepare or route the {label} process named **{automation_name}**.")
+    executed_job = d.get("executed_job", f"`NOT IN SOURCE — link the approved {label} Job before activation.`")
+    trigger = d.get("trigger", "`NOT IN SOURCE`")
+    inputs = d.get("inputs", f"Canonical {label} sources, current metrics, Project state, decisions, approvals, and system health.")
+    tools = d.get("tools", "`NOT IN SOURCE`")
+    credentials = d.get("credential_refs", "Reference approved secret storage only. Never store values here.")
+    allowed_reads = d.get("allowed_reads", "Approved vault sources and explicitly authorized connected systems.")
+    allowed_writes = d.get("allowed_writes", "Drafts and vault records only until a founder-approved grant expands the boundary.")
+    prohibited = d.get("prohibited_actions", "- Sending or publishing without approval\n- Database or production writes without approval\n- Permission expansion\n- Secret storage\n- Strategic decisions without founder approval")
+    dry_run = d.get("dry_run", "Required.")
+    approval_gate = d.get("approval_gate", "Founder approval required before activation.")
+    monitoring = d.get("monitoring", "`NOT IN SOURCE`")
+    failure_handling = d.get("failure_handling", "Stop, record the failure, and route to the Incident System.")
+    retries = d.get("retries", "`NOT IN SOURCE`")
+    rollback = d.get("rollback", "`NOT IN SOURCE`")
+    disable = d.get("disable_procedure", "`NOT IN SOURCE`")
+    status = d.get("status", "Proposed; inactive.")
     return f"""{frontmatter(automation_name, 'automation', status='proposed', owner=system['owner'], automation_id=automation_id, governing_system=system['system_id'])}
 
 # {automation_name}
 
 ## Purpose
 
-Prepare or route the {label} process named **{automation_name}**.
+{purpose}
 
 ## Governing System
 
@@ -321,67 +351,63 @@ Prepare or route the {label} process named **{automation_name}**.
 
 ## Executed Job
 
-`NOT IN SOURCE — link the approved {label} Job before activation.`
+{executed_job}
 
 ## Trigger
 
-`NOT IN SOURCE`
+{trigger}
 
 ## Inputs
 
-Canonical {label} sources, current metrics, Project state, decisions, approvals, and system health.
+{inputs}
 
 ## Tools
 
-`NOT IN SOURCE`
+{tools}
 
 ## Credentials
 
-Reference approved secret storage only. Never store values here.
+{credentials}
 
 ## Allowed Reads
 
-Approved vault sources and explicitly authorized connected systems.
+{allowed_reads}
 
 ## Allowed Writes
 
-Drafts and vault records only until a founder-approved grant expands the boundary.
+{allowed_writes}
 
 ## Prohibited Actions
 
-- Sending or publishing without approval
-- Database or production writes without approval
-- Permission expansion
-- Secret storage
-- Strategic decisions without founder approval
+{prohibited}
 
 ## Dry Run
 
-Required.
+{dry_run}
 
 ## Approval Gate
 
-Founder approval required before activation.
+{approval_gate}
 
 ## Monitoring
 
-`NOT IN SOURCE`
+{monitoring}
 
 ## Failure Handling
 
-Stop, record the failure, and route to the Incident System.
+{failure_handling}
 
 ## Retries
 
-`NOT IN SOURCE`
+{retries}
 
 ## Rollback
 
-`NOT IN SOURCE`
+{rollback}
 
 ## Disable
 
-`NOT IN SOURCE`
+{disable}
 
 ## Owner
 
@@ -389,7 +415,7 @@ Stop, record the failure, and route to the Incident System.
 
 ## Status
 
-Proposed; inactive.
+{status}
 """
 
 
@@ -536,30 +562,30 @@ The record has an owner, source links, status, destination, and next action.
     write(root / approval_id / "APPROVAL REGISTRY.md", "# Approval Registry\n\n| Approval ID | Item | Status | Requested | Decision |\n|---|---|---|---|---|\n")
 
     job_rows = []
-    for idx, job_name in enumerate(system["jobs"], 1):
-        job_name = obj_name(job_name)
+    for idx, job in enumerate(system["jobs"], 1):
+        job_name = obj_name(job)
         filename = f"{idx:03d} — {job_name}.md"
-        write(root / jobs_id / filename, render_job(system, job_name, idx))
+        write(root / jobs_id / filename, render_job(system, job, idx))
         job_id = f"{system['system_id']}-JOB-{idx:03d}"
         job_rows.append(f"| {job_id} | {job_name} | review | [[{filename[:-3]}]] |")
         registries["jobs"].append([job_id, job_name, system["system_id"], "review", f"02 Business Systems/{system['folder_name']}/{jobs_id}/{filename[:-3]}"])
     write(root / jobs_id / "JOB REGISTRY.md", "# Job Registry\n\n| Job ID | Job | Status | File |\n|---|---|---|---|\n" + "\n".join(job_rows) + "\n")
 
     metric_rows = []
-    for idx, metric_name in enumerate(system["metrics"], 1):
-        metric_name = obj_name(metric_name)
+    for idx, metric in enumerate(system["metrics"], 1):
+        metric_name = obj_name(metric)
         filename = f"{idx:03d} — {metric_name}.md"
-        write(root / metrics_id / filename, render_metric(system, metric_name, idx))
+        write(root / metrics_id / filename, render_metric(system, metric, idx))
         metric_id = f"{system['system_id']}-MET-{idx:03d}"
         metric_rows.append(f"| {metric_id} | {metric_name} | review | [[{filename[:-3]}]] |")
         registries["metrics"].append([metric_id, metric_name, system["system_id"], "review", f"02 Business Systems/{system['folder_name']}/{metrics_id}/{filename[:-3]}"])
     write(root / metrics_id / "METRIC REGISTRY.md", "# Metric Registry\n\n| Metric ID | Metric | Status | File |\n|---|---|---|---|\n" + "\n".join(metric_rows) + "\n")
 
     automation_rows = []
-    for idx, automation_name in enumerate(system["automations"], 1):
-        automation_name = obj_name(automation_name)
+    for idx, automation in enumerate(system["automations"], 1):
+        automation_name = obj_name(automation)
         filename = f"{idx:03d} — {automation_name}.md"
-        write(root / automations_id / filename, render_automation(system, automation_name, idx))
+        write(root / automations_id / filename, render_automation(system, automation, idx))
         auto_id = f"{system['system_id']}-AUTO-{idx:03d}"
         automation_rows.append(f"| {auto_id} | {automation_name} | proposed | [[{filename[:-3]}]] |")
         registries["automations"].append([auto_id, automation_name, system["system_id"], "proposed", f"02 Business Systems/{system['folder_name']}/{automations_id}/{filename[:-3]}"])

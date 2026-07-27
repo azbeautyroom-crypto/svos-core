@@ -12,9 +12,9 @@ Owner: Founder
 | I1 | Canonical SessionVue Inputs | In Progress | 1.0.0 | company-brain + two Projects authored and committed; global Jobs input `NOT IN SOURCE` |
 | 2.1 | Executive System | Compiler-built (review) | 1.0.0 | BS-001; compiled via generic compiler; byte-identical golden test; directly-authored tree retired |
 | 2.2 | Operations System | Compiler-built (review) | 1.0.0 | BS-002; compiled via generic compiler (ADR-002); golden test; committed |
-| 2.3 | Marketing System | Not Started | — | Next; approved to build under ADR-002 (Option A) |
-| 2.4 | Product System | Not Started | — | Follows Marketing |
-| 2.5 | Engineering System | Not Started | — | Follows Product |
+| 2.3 | Marketing System | Canonical | 1.0.0 | BS-003; compiled via generic compiler; 19-folder anatomy; golden test (`003.sha`); committed and pushed |
+| 2.4 | Product System | Not Started | — | Candidate; next capability pending founder selection |
+| 2.5 | Engineering System | Not Started | — | Candidate |
 
 # ADR-001 Record — Compiler Architecture Adopted (2026-07-26)
 

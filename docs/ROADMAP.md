@@ -8,9 +8,10 @@
 - I1 — Canonical SessionVue Inputs: In Progress (company-brain + two Projects authored; global Jobs input incomplete)
 - Package 2.1 — Executive System (BS-001): Compiler-built and committed
 - Package 2.2 — Operations System (BS-002): Compiler-built and committed
-- Package 2.3 — Marketing System: Next (not started; approved to build under ADR-002, Option A)
-- Package 2.4 — Product System: Not started
-- Package 2.5 — Engineering System: Not started
+- Package 2.3 — Marketing System (BS-003): **Canonical** — compiler-built and committed
+- Next capability: pending founder selection (readiness review complete; recommendation on file)
+- Package 2.4 — Product System: Candidate
+- Package 2.5 — Engineering System: Candidate
 
 ## Architecture (committed)
 

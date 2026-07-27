@@ -16,7 +16,7 @@ generated: false
 
 **Content first, software second.** (LOCKED)
 
-SessionVue helps licensed beauty professionals get discovered by the clients searching for exactly what they offer — leading with content and belief, with software in service of that.
+SessionVue helps licensed beauty professionals get discovered by the clients searching for exactly what they offer, leading with content and belief, with software in service of that.
 
 - Lock: **LOCKED**
 - Source: `Facts.md` §1 Identity & Mission; verified `10 Company/Mission/README`.

@@ -82,12 +82,14 @@ Founder. Domain consumer/owner for operation: Marketing Business System (BS-003)
 
 | Lane | Speaks as | Primary job |
 |---|---|---|
-| Founder brand | Peer / founder-to-peer (Identity) | Belief, trust, education, storytelling; primary pre-launch growth engine (Mission: content first) |
-| Company brand | SessionVue world / waitlist / product | Product truth, community surface, announcements |
+| Founder brand | Angel Platt on founder-supplied personal accounts only | Belief, trust, education, storytelling, community building, building SessionVue publicly; primary pre-launch growth engine (Mission: content first) |
+| Company brand | SessionVue on company accounts | Product truth, brand world, platform education, announcements, waitlist, community destination |
 
 One idea → role variants per lane. Same Messaging beliefs; different job. Do not run two unrelated theses.
 
-Founder Instagram handle in Identity: `azbeautyroom`. Company social handles: `NOT IN SOURCE — needs founder`.
+Founder social handles: `NOT IN SOURCE — needs founder` (never infer). Handle `azbeautyroom` is not the founder personal account; see Company Identity. Company social handles: `NOT IN SOURCE — needs founder`.
+
+All published copy must obey Voice Guide locked language rules (no spaced dash punctuation in brand writing, never “pros”, never rejected story/chapter waitlist framing).
 
 ## Idea → content (stage map)
 

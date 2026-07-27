@@ -25,7 +25,7 @@ generated: false
 ## Tier Language
 
 - Approved: Building, Growing, Professional, Authority, Leadership, Foundation, Momentum, Influence, Stage, Journey.
-- Forbidden: Beginner, Basic, Starter, Entry-level, Amateur, Newbie, Affordable (in pro copy), Only/Just (minimizers), Limited (for capabilities), Founding / First hundred / Doors close / Get in early.
+- Forbidden: Beginner, Basic, Starter, Entry-level, Amateur, Newbie, Affordable (in professional-facing copy), Only/Just (minimizers), Limited (for capabilities), Founding / First hundred / Doors close / Get in early.
 
 ## Pricing Display
 

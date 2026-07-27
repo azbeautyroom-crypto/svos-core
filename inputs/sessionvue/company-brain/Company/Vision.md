@@ -14,7 +14,7 @@ generated: false
 
 ## Vision Statement
 
-Become the operating layer for every women-run service industry — a category-defining platform where beauty is the wedge, not the ceiling.
+Become the operating layer for every women-run service industry, a category-defining platform where beauty is the wedge, not the ceiling.
 
 - Lock: founder-approved canonical statement.
 - Source: Founder-approved canonical statement, 2026-07-25.

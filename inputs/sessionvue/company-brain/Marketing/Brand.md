@@ -27,11 +27,15 @@ detail: see vault `Brand/Tone By Tier.md`.
 
 `NOT IN SOURCE — needs founder` (canonical visual identity not yet recorded in approved source).
 
-## Locked brand rules (canonical — referenced, not owned)
+## Locked brand rules (canonical; referenced, not owned)
 
-- No external names — ever (2026-07-21).
+- No external names. Ever (2026-07-21).
 - Content philosophy: belief-building; forbidden scarcity / countdown / urgency (2026-07-24).
 - Tier language: stages, not hierarchy; forbidden-terms list (2026-07-24).
+- Spaced dash punctuation forbidden in SessionVue and founder-facing writing; rewrite instead (2026-07-27). See Voice Guide.
+- Never “pros” as audience shorthand (2026-07-27). See Voice Guide.
+- Rejected story/chapter waitlist framing (2026-07-27). See Voice Guide and Positioning.
+- Founder lane and company lane stay separate; founder handles `NOT IN SOURCE` until supplied (2026-07-27). See Company Identity.
 
 ## Authority
 

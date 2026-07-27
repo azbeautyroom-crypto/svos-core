@@ -3,8 +3,8 @@ title: Positioning
 object_type: knowledge
 status: review
 owner: founder
-updated: 2026-07-26
-version: 1.0.0
+updated: 2026-07-27
+version: 1.1.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -22,12 +22,17 @@ The market is not saturated. It is unstructured.
 
 ## Positioning stance
 
-Immersion-first, never feature-first — SessionVue is a world the professional steps into, not a tool
+Immersion-first, never feature-first. SessionVue is a world the professional steps into, not a tool
 she learns. Being findable is the platform's job; the work is hers.
 
-## Waitlist promise (LOCKED)
+## Waitlist promise
 
-"You're not waiting. You're joining the story before the first chapter." (Founder ruling 2026-07-24.)
+**Rejected (founder ruling 2026-07-27):** “You're not waiting. You're joining the story before the
+first chapter.” Also rejected: close rewrites that keep the same dramatic story or chapter framing.
+
+**Current approved waitlist promise:** `NOT IN SOURCE — needs founder`
+
+(Prior note dated 2026-07-24 that locked the rejected line is superseded by the 2026-07-27 ruling.)
 
 ## Promise pillars
 
@@ -35,17 +40,18 @@ Clarity · Transparency · Early Access · Community.
 
 ## Authority
 
-Marketing Knowledge — owned by the Marketing Business System (BS-003). Subordinate to canonical
+Marketing Knowledge. Owned by the Marketing Business System (BS-003). Subordinate to canonical
 Company Brain truth and locked founder rules, which Marketing references and never alters
 (SVOS Constitution, Article V; Marketing principle: shape perception, never alter canonical truth).
 
 ## Source
 
-vault `Brand/Messaging/Core-Messaging.md`, founder-approved hero, `Facts.md` §2.
+vault `Brand/Messaging/Core-Messaging.md`, founder-approved hero, `Facts.md` §2; waitlist promise
+correction 2026-07-27.
 
 ## Consumers
 
-Marketing System (BS-003) objects; any system that reads market-facing communication standards.
+Marketing System (BS-003) objects; Media Operating System; any system that reads market-facing communication standards.
 
 ## Review Cadence
 

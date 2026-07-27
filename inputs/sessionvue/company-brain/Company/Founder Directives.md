@@ -24,8 +24,13 @@ generated: false
 | One launch event | Single gates-open, not sequential rollouts | 2026-07-24 |
 | No file auto-merge | Never merge/compress existing files without founder approval | 2026-07-25 |
 | Red-pen rule | Founder corrections fold into Voice-Guide with date | LOCKED |
+| No spaced dash in brand writing | Never use spaced dash punctuation in SessionVue or founder-facing writing; rewrite instead (hyphens in compounds OK; meta/code out of scope) | 2026-07-27 |
+| Audience language | Never “pros”; use beauty professionals / licensed beauty professionals / professionals / beauty business owners / artists / experts as context requires | 2026-07-27 |
+| Rejected waitlist framing | Never “joining the story before the first chapter” or close story/chapter rewrites | 2026-07-27 |
+| Founder social identity | Founder social handles `NOT IN SOURCE` until founder-supplied; never infer; `azbeautyroom` is not the founder personal account | 2026-07-27 |
+| Brand lanes | Founder lane (Angel Platt) and company lane (SessionVue) stay separate; no legacy project handle in founder lane | 2026-07-27 |
 
-Source: `Facts.md` §7, §10.
+Source: `Facts.md` §7, §10; founder language and identity rulings 2026-07-27.
 
 ## Source
 

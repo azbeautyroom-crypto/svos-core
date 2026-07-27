@@ -165,3 +165,60 @@ def test_validate_output_detects_missing_required():
         result = comp.validate_output(Path(td))
         assert not result["passed"]
         assert result["missing_required"]
+
+
+# ---- ADR-004 (EODM) tests: executable-object definitions ----
+
+_comp_mod = None
+
+
+def _comp():
+    global _comp_mod
+    if _comp_mod is None:
+        spec = importlib.util.spec_from_file_location("compmod_eodm", ROOT / "scripts/compile_sessionvue.py")
+        _comp_mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(_comp_mod)
+    return _comp_mod
+
+
+_SYS = {"system_id": "BS-999", "name": "Test System", "owner": "founder",
+        "knowledge_sources": ["04 Knowledge/Company/Mission.md"]}
+
+
+def test_name_only_renders_identically():
+    """A name string and a bare-name definition object must render identically (the fallback)."""
+    c = _comp()
+    for render in (c.render_job, c.render_metric, c.render_automation):
+        assert render(_SYS, "Alpha", 1) == render(_SYS, {"name": "Alpha"}, 1)
+
+
+def test_enriched_object_renders_real_content():
+    """A definition object renders its provided fields as real content (no NOT IN SOURCE for them)."""
+    c = _comp()
+    job = c.render_job(_SYS, {"name": "Alpha", "trigger": "Every Monday 09:00",
+                              "execution": "1. Real step one.", "completion_condition": "Recorded."}, 1)
+    assert "Every Monday 09:00" in job and "Real step one." in job and "Recorded." in job
+    metric = c.render_metric(_SYS, {"name": "M", "definition": "Real definition", "formula": "x / y", "target": "90%"}, 1)
+    assert "Real definition" in metric and "x / y" in metric and "90%" in metric
+    formula_section = metric.split("## Formula", 1)[1].split("##", 1)[0]
+    assert "NOT IN SOURCE" not in formula_section
+    auto = c.render_automation(_SYS, {"name": "A", "executed_job": "BS-999-JOB-001", "trigger": "cron-daily", "status": "active"}, 1)
+    assert "BS-999-JOB-001" in auto and "cron-daily" in auto and "active" in auto
+
+
+def test_mixed_name_and_definition():
+    """Name-only and enriched objects coexist in one list and render correctly."""
+    c = _comp()
+    items = ["Plain Job", {"name": "Rich Job", "trigger": "cron-daily"}]
+    outputs = [c.render_job(_SYS, item, i) for i, item in enumerate(items, 1)]
+    assert "# Plain Job" in outputs[0] and "Manual founder request" in outputs[0]  # default trigger
+    assert "# Rich Job" in outputs[1] and "cron-daily" in outputs[1]              # enriched trigger
+
+
+def test_canonical_state_boundary():
+    """Runtime/state keys (values, runs, logs) are never rendered into canonical output."""
+    c = _comp()
+    metric = c.render_metric(_SYS, {"name": "M", "value": "42", "time_series": [1, 2, 3]}, 1)
+    assert "42" not in metric
+    auto = c.render_automation(_SYS, {"name": "A", "last_run": "2026-07-26T09:00", "logs": "stacktrace"}, 1)
+    assert "2026-07-26T09:00" not in auto and "stacktrace" not in auto

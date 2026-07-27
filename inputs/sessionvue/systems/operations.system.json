@@ -52,7 +52,22 @@
     { "path": "06 Registry/Project Registry.md", "label": "Project Registry", "status": "present" }
   ],
   "jobs": [
-    "Capture Incoming Request",
+    {
+      "name": "Capture Incoming Request",
+      "purpose": "Capture every incoming request into the intake queue with its source, candidate owner, and owning System, so nothing important exists only in someone's head (Operating System Protocol).",
+      "trigger": "A new request, idea, or task enters SVOS from any source — founder, system, agent, or external.",
+      "inputs": "- The raw request or idea\n- Its source\n- The current active System and priorities",
+      "preconditions": "- The request is legible enough to record.\n- The intake queue is reachable.",
+      "execution": "1. Record the request verbatim with its source (nothing important exists only in someone's head).\n2. Determine which System owns it and which department supports it.\n3. Determine whether it is planning or implementation.\n4. Check whether it already exists; if so, reference it and do not recreate.\n5. Place the captured request in the intake queue for categorization.",
+      "decision_logic": "- IF the request already exists, THEN reference it and stop; do not recreate (Operating System Protocol).\n- IF the request is unrelated to the active System, THEN capture it to the backlog and return to the active System (protect focus).\n- IF ownership or source is unclear, THEN mark `NOT IN SOURCE` and do not infer.\n- ESCALATE WHEN the request requires a founder decision.",
+      "outputs": "A captured request record in the intake queue with source, candidate owning System, and a planning/implementation classification.",
+      "destinations": "The Operations intake queue (02 Intake).",
+      "validation": "- Request recorded verbatim\n- Source attributed\n- Not a duplicate of an existing item\n- Candidate owning System identified",
+      "approval": "None required to capture; capturing is not a decision. Approval attaches downstream when the work is acted on.",
+      "exceptions": "If source or ownership cannot be determined, capture the request, flag it `NOT IN SOURCE`, and route to categorization; never infer the missing fact.",
+      "completion_condition": "The request is recorded in the intake queue with its source and a candidate owning System, ready for categorization.",
+      "improvement_loop": "Recurring mis-captures or missing sources refine the intake rules through recorded improvement."
+    },
     "Categorize Request",
     "Assign Owning System",
     "Identify Dependencies",

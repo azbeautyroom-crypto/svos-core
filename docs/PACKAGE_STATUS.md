@@ -13,8 +13,9 @@ Owner: Founder
 | 2.1 | Executive System | Compiler-built (review) | 1.0.0 | BS-001; compiled via generic compiler; byte-identical golden test; directly-authored tree retired |
 | 2.2 | Operations System | Compiler-built (review) | 1.0.0 | BS-002; compiled via generic compiler (ADR-002); golden test; committed |
 | 2.3 | Marketing System | Canonical | 1.0.0 | BS-003; compiled via generic compiler; 19-folder anatomy; golden test (`003.sha`); committed and pushed |
-| 2.4 | Product System | Not Started | — | Candidate; next capability pending founder selection |
-| 2.5 | Engineering System | Not Started | — | Candidate |
+| BS-004 | Analytics System | Deferred (valid boundary) | — | Founder decision 2026-07-26: valid constitutional ownership boundary; authoring deferred until canonical launch metrics + Engineering instrumentation exist |
+| BS-005 | Product System | Next | — | Current priority — greater immediate launch leverage (founder decision 2026-07-26) |
+| BS-006 | Engineering System | Not Started | — | Candidate |
 
 # ADR-001 Record — Compiler Architecture Adopted (2026-07-26)
 

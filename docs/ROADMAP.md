@@ -9,9 +9,15 @@
 - Package 2.1 — Executive System (BS-001): Compiler-built and committed
 - Package 2.2 — Operations System (BS-002): Compiler-built and committed
 - Package 2.3 — Marketing System (BS-003): **Canonical** — compiler-built and committed
-- Next capability: pending founder selection (readiness review complete; recommendation on file)
-- Package 2.4 — Product System: Candidate
-- Package 2.5 — Engineering System: Candidate
+- BS-004 — Analytics System: **Valid ownership boundary; authoring DEFERRED** (founder decision 2026-07-26). Gate: deferred until canonical launch metrics and Engineering instrumentation exist.
+- **Next capability: Product** (BS-005) — greater immediate launch leverage (founder decision 2026-07-26).
+- BS-006 — Engineering System: Candidate
+
+## Founder Decision — 2026-07-26 (operational; no governing change)
+
+- **BS-004 Analytics is a valid constitutional ownership boundary** (canonical owner of company measurement; evidence: OSP ownership map "Metrics → Analytics", Marketing's canonical dependency, all metrics `NOT IN SOURCE`).
+- **Authoring is deferred** until canonical launch metrics **and** Engineering instrumentation exist — until then Analytics would define measurement over `NOT IN SOURCE` placeholders.
+- **Priority shifts to Product (BS-005)** for greater immediate launch leverage, per the launch-first mission.
 
 ## Architecture (committed)
 

@@ -1,10 +1,10 @@
 ---
 title: Product Brain
 object_type: knowledge
-status: review
+status: verified
 owner: founder
 updated: 2026-07-27
-version: 2.1.1
+version: 2.2.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -156,7 +156,7 @@ Supabase-backed. Waitlist live (anon-INSERT-only). Cities seeded: 6,610.
 
 See [[Membership Brain]] for the Visitor / Launch / Growth / Power / Salon structure.
 
-Membership capability intent that shapes discovery and booking (founder rulings recorded in Tier Architecture where labeled):
+Membership capability intent that shapes discovery and booking (**LOCKED** Product Brain intent, founder-confirmed 2026-07-27):
 
 - Visitor: spectator; no booking access (founder ruling 2026-07-23).
 - Launch: filtered discovery (findable); portfolio on own feed; booking begins at Launch.
@@ -208,7 +208,7 @@ Founder (Angel Platt). Future consumer/owner System: Product (BS-005), deferred 
 
 ## Consumers
 
-Executive and Marketing Systems (by reference); future Product System; Projects that touch product scope; any Job that states product truth; [[Product Implementation Audit]] (by reference for Desired End State).
+Executive and Marketing Systems (by reference); future Product System; Projects that touch product scope; any Job that states product truth. Engineering and [[Product Implementation Audit]] consume this Brain for intent / Desired End State; they do not redefine it.
 
 ## Review Cadence
 

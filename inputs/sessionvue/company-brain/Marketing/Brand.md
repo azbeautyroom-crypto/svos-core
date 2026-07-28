@@ -3,8 +3,8 @@ title: Brand
 object_type: knowledge
 status: review
 owner: founder
-updated: 2026-07-26
-version: 1.0.0
+updated: 2026-07-27
+version: 1.1.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -34,8 +34,10 @@ detail: see vault `Brand/Tone By Tier.md`.
 - Tier language: stages, not hierarchy; forbidden-terms list (2026-07-24).
 - Spaced dash punctuation forbidden in SessionVue and founder-facing writing; rewrite instead (2026-07-27). See Voice Guide.
 - Never “pros” as audience shorthand (2026-07-27). See Voice Guide.
+- Use **Industry Leaders** for the trusted specialty-region network role; never “Power Pros” (2026-07-27).
 - Rejected story/chapter waitlist framing (2026-07-27). See Voice Guide and Positioning.
 - Founder lane and company lane stay separate; founder handles `NOT IN SOURCE` until supplied (2026-07-27). See Company Identity.
+- Mission = discovery; content-first is GTM only (2026-07-27). See Mission. Product truth lives in Product Brain. Product Implementation Audit is engineering reality only; Marketing must not treat it as product truth (LOCKED 2026-07-27).
 
 ## Authority
 

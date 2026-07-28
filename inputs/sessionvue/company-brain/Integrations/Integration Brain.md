@@ -3,8 +3,8 @@ title: Integration Brain
 object_type: knowledge
 status: review
 owner: founder
-updated: 2026-07-26
-version: 1.0.0
+updated: 2026-07-27
+version: 1.1.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -27,11 +27,12 @@ generated: false
 
 ## Email / Domain
 
+- Company business email (current): `sessionvue@gmail.com` (temporary). Will be replaced later with a professionally formatted company email once the owned sending domain is set. Founder 2026-07-27.
 - Sending domain: `NOT IN SOURCE — needs founder` (sessionvue.com is third-party owned; WAITLIST_FROM unset → email flows blocked). Critical gap (Heat 5).
 
 Other external integrations: `NOT IN SOURCE — needs founder`.
 
-Source: `Facts.md` §5, §8, Critical Gaps.
+Source: `Facts.md` §5, §8, Critical Gaps; founder business-email ruling 2026-07-27.
 
 ## Source
 

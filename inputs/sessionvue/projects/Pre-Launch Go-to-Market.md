@@ -15,9 +15,9 @@ source: "SessionVue-OS/02 Projects/SessionVue/60 Marketing/Pre-Launch Go-to-Mark
 
 ## Objective
 
-The umbrella project for everything between a stranger seeing the founder's content and a pro on the waitlist.
+The umbrella project for everything between a stranger seeing the founder's content and a beauty professional on the waitlist.
 
-**Goal (founder, verbatim):** get beauty professionals interested and ultimately signed up for the waitlist — the app is the destination, the content is the front door.
+**Goal (founder, verbatim):** get beauty professionals interested and ultimately signed up for the waitlist. The app is the destination; the content is the front door.
 
 ## Status (verbatim from source)
 

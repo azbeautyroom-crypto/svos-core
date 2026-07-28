@@ -3,8 +3,8 @@ title: Canonical SessionVue Inputs — Source Mapping Manifest
 object_type: knowledge
 status: review
 owner: founder
-updated: 2026-07-26
-version: 1.0.0
+updated: 2026-07-27
+version: 1.1.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -15,6 +15,15 @@ generated: false
 Date: 2026-07-26 · Owner: founder · Source vault: `~/Downloads/SessionVue-OS` (read-only; not modified)
 Canonical source of truth: `10 Company/Facts.md` (owner: founder; uses the NOT IN SOURCE convention)
 
+## Product knowledge architecture (LOCKED 2026-07-27)
+
+| Object | Path | Role | `source_of_truth` |
+|---|---|---|---|
+| **Product Brain** | `company-brain/Products/Product Brain.md` → compiles to `04 Knowledge/Products/Product Brain.md` | Founder product **specification** (intent). Owns product truth. | `true` |
+| **Product Implementation Audit** | `company-brain/Products/Product Implementation Audit.md` → compiles to `04 Knowledge/Products/Product Implementation Audit.md` | Living **engineering reference** (code reality + gaps vs Brain). Not a second Product Brain. | `false` |
+
+Rules: link; never merge. When code and Brain disagree, update the Audit; change Product Brain only by founder ruling. Marketing consumes Product Brain for product truth, not the Audit. See Founder Directives: Product Brain / Implementation Audit split.
+
 | Input file | Source file | Source authority | Transformation performed | Unresolved gaps |
 |---|---|---|---|---|
 | company-brain/Company/Mission.md | `10 Company/Facts.md` §1 (→ `10 Company/Mission/README`) | Canonical, founder, **LOCKED** | Transcribed locked mission ("Content first, software second") verbatim; added Knowledge frontmatter + sections | none |
@@ -23,7 +32,8 @@ Canonical source of truth: `10 Company/Facts.md` (owner: founder; uses the NOT I
 | company-brain/Company/Business Model.md | `10 Company/Facts.md` §1,§3,§6,§8 | Canonical, founder, **LOCKED** | Transcribed model ("Independent-first…") + tier/launch summary | **Salon tier pricing NOT IN SOURCE** |
 | company-brain/Company/Founder Directives.md | `10 Company/Facts.md` §7,§10 | Canonical, founder, **LOCKED** | Transcribed the 8 locked directives table | none |
 | company-brain/Memberships/Membership Brain.md | `10 Company/Facts.md` §3 | Canonical, founder | Transcribed tier structure, tier language (approved/forbidden), pricing display | **Salon tier NOT IN SOURCE** |
-| company-brain/Products/Product Brain.md | `10 Company/Facts.md` §3,§4,§5,§6 | Canonical, founder | Transcribed 14 canonical categories, platform, tier pointer | **Laser / Body sculpting / Dental specialty lists NOT IN SOURCE** |
+| company-brain/Products/Product Brain.md | Founder product architecture rulings 2026-07-27; prior `Facts.md` §3–§6 | Canonical, founder, **LOCKED** intent | Founder specification: Session principle, dual discovery, categories, platform, tier pointer; intent-only (no implementation state) | **Laser / Body sculpting / Dental specialty lists NOT IN SOURCE** |
+| company-brain/Products/Product Implementation Audit.md | Product Audit v1 against `/Users/angelplatt/AZBeautyRoom`; intent pointers to Product Brain | Engineering reference (not product truth) | Living audit: Current Implementation · Founder Intent · Gap · Evidence per lifecycle | Gaps recorded inside Audit; closing them is not authorized by recording |
 | company-brain/Integrations/Integration Brain.md | `10 Company/Facts.md` §5,§8, Critical Gaps | Canonical, founder | Transcribed Supabase facts + Shelby partnership status | **Sending domain + external integrations beyond verified sources NOT IN SOURCE** |
 | company-brain/Company/Operating System Protocol.md | `SessionVue-OS/00 Executive/Operating-System-Protocol.md` | Canonical, founder, verified | Transcribed core principles, canonical Workflow, ownership map, response standard; added frontmatter | none |
 | company-brain/Company/Approval Rules.md | `contracts/EXECUTION_CONTRACT.md` (CONTRACT-001) + `10 Company/Facts.md` §10 | Canonical, founder | Assembled approval requirements + locked directives | **Numeric approval thresholds NOT IN SOURCE** |

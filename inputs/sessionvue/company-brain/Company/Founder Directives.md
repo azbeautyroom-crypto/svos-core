@@ -3,8 +3,8 @@ title: Founder Directives
 object_type: knowledge
 status: review
 owner: founder
-updated: 2026-07-26
-version: 1.0.0
+updated: 2026-07-27
+version: 1.2.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -24,8 +24,18 @@ generated: false
 | One launch event | Single gates-open, not sequential rollouts | 2026-07-24 |
 | No file auto-merge | Never merge/compress existing files without founder approval | 2026-07-25 |
 | Red-pen rule | Founder corrections fold into Voice-Guide with date | LOCKED |
+| No spaced dash in brand writing | Never use spaced dash punctuation in SessionVue or founder-facing writing; rewrite instead (hyphens in compounds OK; meta/code out of scope) | 2026-07-27 |
+| Audience language | Never “pros”; use beauty professionals / licensed beauty professionals / professionals / beauty business owners / artists / experts / Industry Leaders (when that role is meant) | 2026-07-27 |
+| Industry Leaders term | Canonical term for trusted specialty-region professionals; replaces temporary “Power Pros”; apply consistently | 2026-07-27 |
+| Rejected waitlist framing | Never “joining the story before the first chapter” or close story/chapter rewrites | 2026-07-27 |
+| Founder social identity | Founder social handles `NOT IN SOURCE` until founder-supplied; never infer; `azbeautyroom` is not the founder personal account | 2026-07-27 |
+| Brand lanes | Founder lane (Angel Platt) and company lane (SessionVue) stay separate; no legacy project handle in founder lane | 2026-07-27 |
+| Mission vs GTM | Permanent Mission = organize discovery; “Content first, software second” = GTM strategy only | 2026-07-27 |
+| Dual discovery worlds | Client Discovery and Professional Discovery stay separate; same Session, different exposure; never merge (product principle; detail in Product Brain) | 2026-07-27 |
+| Product Brain ownership | Single Product Brain owns product intent/truth including Session principle; no Customers Brain; BS-005 deferred until Brain matures | 2026-07-27 |
+| Product Brain / Implementation Audit split | Product Brain = founder product specification (intent only). Product Implementation Audit = living engineering reference (code reality + gaps vs Brain). Link the two; never merge. The Audit does not redefine product truth. Marketing expresses Product Brain; it does not treat the Audit as product truth. | 2026-07-27 |
 
-Source: `Facts.md` §7, §10.
+Source: `Facts.md` §7, §10; founder language and product architecture rulings 2026-07-27 (including Product Brain / Implementation Audit architecture).
 
 ## Source
 

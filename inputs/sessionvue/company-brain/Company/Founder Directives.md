@@ -3,8 +3,8 @@ title: Founder Directives
 object_type: knowledge
 status: review
 owner: founder
-updated: 2026-07-27
-version: 1.2.0
+updated: 2026-07-28
+version: 1.5.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -34,8 +34,11 @@ generated: false
 | Dual discovery worlds | Client Discovery and Professional Discovery stay separate; same Session, different exposure; never merge (product principle; detail in Product Brain) | 2026-07-27 |
 | Product Brain ownership | Single Product Brain owns product intent/truth including Session principle; no Customers Brain; BS-005 deferred until Brain matures | 2026-07-27 |
 | Product Brain / Implementation Audit split | Product Brain = founder product specification (intent only). Product Implementation Audit = living engineering reference (code reality + gaps vs Brain). Link the two; never merge. The Audit does not redefine product truth. Marketing expresses Product Brain; it does not treat the Audit as product truth. | 2026-07-27 |
+| SVOS Kernel v1.0 | Machine Capability = only executable type. Company Capability + Company Asset = thin Company Brain catalogs (governance/ownership/planning/portfolio/launch readiness/reporting only); never authorize execution; outside runtime. Runtime: Trigger→Queue→Machine Capability Resolution→Eligibility→Dependency→Permission→Execution→Validation→State→Logs. Event Bus deferred (ADR-007). Spec: [[ADR-006-svos-kernel-v1]]. | 2026-07-27 |
+| Company Philosophy | Sustainable growth is produced by correct positioning → trust → discoverability → opportunity; not by chasing attention. Full text: Company Identity (Company Philosophy). | 2026-07-28 |
+| Communication Architecture | SessionVue operates separate Founder and Product Communication Systems. Founder primarily explains WHY and builds trust through public thinking. Product primarily explains HOW and builds confidence through demonstrated value. Both intentionally produce growth through Company Philosophy. They reinforce one another and never merge or duplicate. Full doctrine: Company Identity. | 2026-07-28 |
 
-Source: `Facts.md` §7, §10; founder language and product architecture rulings 2026-07-27 (including Product Brain / Implementation Audit architecture).
+Source: `Facts.md` §7, §10; founder language and product architecture rulings 2026-07-27 (including Product Brain / Implementation Audit architecture); SVOS Kernel v1.0 acceptance 2026-07-27 (ADR-006); Company Philosophy filing 2026-07-28; Communication Architecture filing 2026-07-28.
 
 ## Source
 

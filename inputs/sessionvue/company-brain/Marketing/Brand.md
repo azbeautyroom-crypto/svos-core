@@ -3,8 +3,8 @@ title: Brand
 object_type: knowledge
 status: review
 owner: founder
-updated: 2026-07-27
-version: 1.1.0
+updated: 2026-07-28
+version: 1.2.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -27,6 +27,11 @@ detail: see vault `Brand/Tone By Tier.md`.
 
 `NOT IN SOURCE — needs founder` (canonical visual identity not yet recorded in approved source).
 
+## Communication Architecture and Brand lanes
+
+Communication Architecture is owned by Company Identity. Brand lanes remain identity assignment
+beneath that architecture. Brand does not own or redefine Communication Architecture.
+
 ## Locked brand rules (canonical; referenced, not owned)
 
 - No external names. Ever (2026-07-21).
@@ -38,6 +43,7 @@ detail: see vault `Brand/Tone By Tier.md`.
 - Rejected story/chapter waitlist framing (2026-07-27). See Voice Guide and Positioning.
 - Founder lane and company lane stay separate; founder handles `NOT IN SOURCE` until supplied (2026-07-27). See Company Identity.
 - Mission = discovery; content-first is GTM only (2026-07-27). See Mission. Product truth lives in Product Brain. Product Implementation Audit is engineering reality only; Marketing must not treat it as product truth (LOCKED 2026-07-27).
+- Company Philosophy and Communication Architecture: Company Identity (LOCKED 2026-07-28).
 
 ## Authority
 

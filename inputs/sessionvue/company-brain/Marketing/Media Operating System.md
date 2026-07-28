@@ -3,8 +3,8 @@ title: Media Operating System
 object_type: knowledge
 status: review
 owner: founder
-updated: 2026-07-27
-version: 1.0.0
+updated: 2026-07-28
+version: 1.2.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -17,11 +17,12 @@ marketing_domain: true
 
 Reusable operating framework for running **founder brand** and **company brand** media together:
 how ideas become content, how one idea becomes multiple platform assets, approval and publishing,
-community response, performance review, and improvement — without duplicating canonical truth.
+community response, performance review, and improvement without duplicating canonical truth.
 
 This is **Knowledge**, not a Business System, Job, Project, or Core specification.
 Marketing (BS-003) **references** this framework when operating media. It does not own Mission,
-Messaging, Voice, or Brand truth; those remain their own canonical Knowledge objects.
+Messaging, Voice, Brand, Company Philosophy, or Communication Architecture truth; those remain their
+own canonical Knowledge objects in Company Identity and related Company Brain files.
 
 ## Source
 
@@ -36,7 +37,8 @@ brief → improve).
 ## Authority
 
 Subordinate to: Founder instruction → SVOS Constitution → Operating System Protocol → Company Brain
-truth objects (Mission, Directives, Messaging, Voice, Positioning, Brand) → this framework.
+truth objects (Mission, Directives, Company Identity including Communication Architecture and
+Company Philosophy, Messaging, Voice, Positioning, Brand) → this framework.
 
 Does **not** redefine strategic positioning (Executive), waitlist/database rules, or locked directives.
 Does **not** replace OSP as the single Operating Doctrine.
@@ -78,14 +80,33 @@ Founder. Domain consumer/owner for operation: Marketing Business System (BS-003)
 - Project: Pre-Launch Go-to-Market
 - Project: Landing Page (Waitlist Website)
 
+## Communication Architecture (governing purpose)
+
+Full doctrine: [[04 Knowledge/Company/Company Identity]] Communication Architecture.
+
+This Media Operating System does not redefine Communication Architecture. It operates media under it.
+
+| Communication System | Brand lane | Operating emphasis |
+|---|---|---|
+| Founder Communication System | Founder | Principal growth driver through correct positioning and trust (Company Philosophy). Public thinking; not constant product advertisement. |
+| Product Communication System | Company | Understanding, confidence, and adoption. Product education is in Marketing scope. Account-specific support delivery remains outside Marketing. |
+
+When the operating schema supports it, every content item must declare both `communication_system` and `brand_lane`. Until then, plan and produce Jobs must state both explicitly in the plan or draft package.
+
+Cross-reference between systems is allowed. Identity collapse is not.
+
 ## Brand lanes
+
+Brand lanes implement identity assignment beneath Communication Architecture.
 
 | Lane | Speaks as | Primary job |
 |---|---|---|
-| Founder brand | Angel Platt on founder-supplied personal accounts only | Belief, trust, education, storytelling, community building, building SessionVue publicly; primary pre-launch growth engine (GTM: content first; Mission: discovery) |
-| Company brand | SessionVue on company accounts | Product truth, brand world, platform education, announcements, waitlist, community destination |
+| Founder brand | Angel Platt on founder-supplied personal accounts only | Operate Founder Communication System: communicate SessionVue thinking publicly; build trust through correct positioning; belief, education, storytelling, community, building SessionVue publicly. See Company Identity Communication Architecture and Company Philosophy. GTM: content first. Mission: discovery. |
+| Company brand | SessionVue on company accounts | Operate Product Communication System: product truth, brand world, platform education, announcements, waitlist, community destination; understanding, confidence, adoption. |
 
-One idea → role variants per lane. Same Messaging beliefs; different job. Do not run two unrelated theses.
+Company Philosophy (correct positioning → trust → discoverability → opportunity → sustainable growth) is owned by [[04 Knowledge/Company/Company Identity]]. This framework references it and does not redefine it.
+
+One idea → role variants per lane and Communication System. Same Messaging beliefs; different job. Do not run two unrelated theses.
 
 Founder social handles: `NOT IN SOURCE — needs founder` (never infer). Handle `azbeautyroom` is not the founder personal account; see Company Identity. Company social handles: `NOT IN SOURCE — needs founder`.
 
@@ -137,8 +158,8 @@ Objects are never deleted (Object Model); use `archived`.
 
 | Surface | Default | Note |
 |---|---|---|
-| Founder account | Founder | Peer voice; locked Voice/Directives |
-| Company account | Marketing / founder designee | Product/waitlist truth; support delivery is out of Marketing scope |
+| Founder account | Founder | Peer voice; Founder Communication System; locked Voice/Directives |
+| Company account | Marketing / founder designee | Product Communication System; product/waitlist truth and product education; account-specific support delivery is out of Marketing scope |
 | On-call assignee | `NOT IN SOURCE — needs founder` | |
 
 ## Performance and improvement
@@ -159,6 +180,6 @@ When Workflow compilation exists, migrate execution-order content to a Marketing
 ## Conflict Handling
 
 - Constitution and OSP win over this framework.  
-- Mission, Messaging, Voice, Positioning, Brand, and Founder Directives win on truth and expression rules.  
+- Mission, Messaging, Voice, Positioning, Brand, Company Identity (including Communication Architecture and Company Philosophy), and Founder Directives win on truth and expression rules.  
 - Job definitions win on procedure (this file must not silently contain Job steps).  
 - A fact absent from source is `NOT IN SOURCE`, not invented.

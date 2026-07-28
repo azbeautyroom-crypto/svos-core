@@ -3,8 +3,8 @@ title: Canonical SessionVue Inputs — Source Mapping Manifest
 object_type: knowledge
 status: review
 owner: founder
-updated: 2026-07-27
-version: 1.1.0
+updated: 2026-07-28
+version: 1.2.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -24,19 +24,30 @@ Canonical source of truth: `10 Company/Facts.md` (owner: founder; uses the NOT I
 
 Rules: link; never merge. When code and Brain disagree, update the Audit; change Product Brain only by founder ruling. Marketing consumes Product Brain for product truth, not the Audit. See Founder Directives: Product Brain / Implementation Audit split.
 
+## Communication Architecture ownership (LOCKED 2026-07-28)
+
+| Object | Path | Role |
+|---|---|---|
+| **Communication Architecture** (full doctrine) | `company-brain/Company/Company Identity.md` | Canonical owner of Communication Systems, purposes, audiences, WHY/HOW relationship, exclusions, and alignment to Company Philosophy |
+| **Company Philosophy** (full doctrine) | `company-brain/Company/Company Identity.md` | Canonical owner of positioning → trust → discoverability → opportunity → sustainable growth |
+| **Brand lanes** | `company-brain/Company/Company Identity.md` | Identity assignment and account routing beneath Communication Architecture |
+| **Communication Architecture lock** | `company-brain/Company/Founder Directives.md` | Short locked ruling and pointer only |
+| **Media Operating System** | `company-brain/Marketing/Media Operating System.md` | Operating consumer: idea→content method; references Communication Architecture and Company Philosophy; does not own them |
+
 | Input file | Source file | Source authority | Transformation performed | Unresolved gaps |
 |---|---|---|---|---|
 | company-brain/Company/Mission.md | `10 Company/Facts.md` §1 (→ `10 Company/Mission/README`) | Canonical, founder, **LOCKED** | Transcribed locked mission ("Content first, software second") verbatim; added Knowledge frontmatter + sections | none |
 | company-brain/Company/Vision.md | Founder-approved canonical statement, 2026-07-25 | Canonical, founder | Transcribed founder-approved vision verbatim | none |
-| company-brain/Company/Company Identity.md | `10 Company/Facts.md` §1–2 | Canonical, founder | Transcribed identity + positioning facts (founder, target, voice, promise pillars) | none |
+| company-brain/Company/Company Identity.md | `10 Company/Facts.md` §1–2; founder rulings 2026-07-27–2026-07-28 | Canonical, founder | Identity + Brand lanes + Company Philosophy + Communication Architecture | Founder/company social handles NOT IN SOURCE; azbeautyroom lane ownership beyond exclusion NOT IN SOURCE |
 | company-brain/Company/Business Model.md | `10 Company/Facts.md` §1,§3,§6,§8 | Canonical, founder, **LOCKED** | Transcribed model ("Independent-first…") + tier/launch summary | **Salon tier pricing NOT IN SOURCE** |
-| company-brain/Company/Founder Directives.md | `10 Company/Facts.md` §7,§10 | Canonical, founder, **LOCKED** | Transcribed the 8 locked directives table | none |
+| company-brain/Company/Founder Directives.md | `10 Company/Facts.md` §7,§10; founder rulings through 2026-07-28 | Canonical, founder, **LOCKED** | Locked directives table including Company Philosophy and Communication Architecture pointers | none for those locks |
 | company-brain/Memberships/Membership Brain.md | `10 Company/Facts.md` §3 | Canonical, founder | Transcribed tier structure, tier language (approved/forbidden), pricing display | **Salon tier NOT IN SOURCE** |
 | company-brain/Products/Product Brain.md | Founder product architecture rulings 2026-07-27; prior `Facts.md` §3–§6 | Canonical, founder, **LOCKED** intent | Founder specification: Session principle, dual discovery, categories, platform, tier pointer; intent-only (no implementation state) | **Laser / Body sculpting / Dental specialty lists NOT IN SOURCE** |
 | company-brain/Products/Product Implementation Audit.md | Product Audit v1 against `/Users/angelplatt/AZBeautyRoom`; intent pointers to Product Brain | Engineering reference (not product truth) | Living audit: Current Implementation · Founder Intent · Gap · Evidence per lifecycle | Gaps recorded inside Audit; closing them is not authorized by recording |
 | company-brain/Integrations/Integration Brain.md | `10 Company/Facts.md` §5,§8, Critical Gaps | Canonical, founder | Transcribed Supabase facts + Shelby partnership status | **Sending domain + external integrations beyond verified sources NOT IN SOURCE** |
 | company-brain/Company/Operating System Protocol.md | `SessionVue-OS/00 Executive/Operating-System-Protocol.md` | Canonical, founder, verified | Transcribed core principles, canonical Workflow, ownership map, response standard; added frontmatter | none |
 | company-brain/Company/Approval Rules.md | `contracts/EXECUTION_CONTRACT.md` (CONTRACT-001) + `10 Company/Facts.md` §10 | Canonical, founder | Assembled approval requirements + locked directives | **Numeric approval thresholds NOT IN SOURCE** |
+| company-brain/Marketing/Media Operating System.md | Founder filing 2026-07-27; Communication Architecture consumer update 2026-07-28 | Canonical, founder | Dual-lane media method; references Company Identity Communication Architecture and Company Philosophy | On-call assignee NOT IN SOURCE; future publication not doctrine |
 | projects/Landing Page (Waitlist Website).md | `SessionVue-OS/02 Projects/SessionVue/Website/Landing Page (waitlist website).md` | Canonical, founder (`type: project`) | Transcribed objective, verbatim status/next-action, deliverables, open items; vault cross-refs rendered as plain paths | Completion condition + metrics `NOT IN SOURCE` |
 | projects/Pre-Launch Go-to-Market.md | `SessionVue-OS/02 Projects/SessionVue/60 Marketing/Pre-Launch Go-to-Market.md` | Canonical, founder (`type: project`) | Transcribed verbatim goal/status/next-action, funnel, consolidated automations, boundaries | Completion condition + per-platform metric split `NOT IN SOURCE` |
 | jobs/README.md | none — vault `80 Operations/Jobs` confirmed **empty** 2026-07-26 | — | Placeholder stub w/ frontmatter | **Global jobs NOT IN SOURCE (no approved source exists yet)** |
@@ -56,6 +67,15 @@ Rules: link; never merge. When code and Brain disagree, update the Audit; change
 - Dental specialty list
 - Sending domain
 - External integrations beyond verified sources
+
+## Communication Architecture NOT IN SOURCE (founder-confirmed 2026-07-28)
+- Founder social handles
+- Company social handles
+- Final ownership of `azbeautyroom` beyond current locked exclusions
+- Future publication doctrine
+- Direct-support owner or on-call assignee unless already canonically assigned
+- Channel-specific publishing cadence
+- Platform-specific account strategy
 
 ## Projects & global Jobs (2026-07-26)
 - **Projects**: authored from the two founder-approved active projects named in the vault's `02 Projects.md` (Landing Page / waitlist and Pre-Launch Go-to-Market). Additional vault Systems (001 Waitlist, 002 Content Engine, 003 Content Distribution) are **not** yet authored as Project inputs — available if the founder wants them added.

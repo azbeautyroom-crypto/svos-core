@@ -3,8 +3,8 @@ title: Mission
 object_type: knowledge
 status: review
 owner: founder
-updated: 2026-07-26
-version: 1.0.0
+updated: 2026-07-27
+version: 1.1.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -14,16 +14,31 @@ generated: false
 
 ## Mission Statement
 
-**Content first, software second.** (LOCKED)
+**SessionVue exists to organize discovery in the beauty industry.** (LOCKED 2026-07-27)
 
-SessionVue helps licensed beauty professionals get discovered by the clients searching for exactly what they offer, leading with content and belief, with software in service of that.
+The problem is not a lack of talent, client demand, or beauty professionals. The problem is a lack of structure connecting the right clients with the right professionals. SessionVue organizes that discovery.
 
-- Lock: **LOCKED**
-- Source: `Facts.md` §1 Identity & Mission; verified `10 Company/Mission/README`.
+SessionVue helps licensed beauty professionals get discovered by the clients searching for exactly what they offer.
+
+- Lock: **LOCKED** (founder ruling 2026-07-27: discovery is the permanent Mission)
+- Source: founder business architecture ruling 2026-07-27; prior discovery language in Messaging / Identity.
+
+## Go-to-market strategy (not the Mission)
+
+**Content first, software second.** (LOCKED as GTM strategy)
+
+Pre-launch and acquisition lead with content and belief. Software serves discovery. This is strategy for how SessionVue reaches the market, not the permanent company Mission.
+
+- Lock: **LOCKED as GTM strategy** (founder ruling 2026-07-27; formerly mis-filed as Mission statement)
+- Consumed by: Pre-Launch Go-to-Market Project; Marketing Jobs; Media Operating System.
+
+## Core philosophy (Mission-level)
+
+Everything in SessionVue exists to increase discovery. Education, marketing, booking, and content creation exist only because they improve discovery. They are not the Mission.
 
 ## Source
 
-Authored from 10 Company/Facts.md (canonical source of truth, owner: founder). Where the canonical source has no value, the field is marked `NOT IN SOURCE — needs founder` rather than invented.
+Founder rulings 2026-07-27 (Mission = discovery; content-first = GTM). Prior Facts.md / Mission transcription retained where compatible.
 
 ## Authority
 
@@ -47,4 +62,4 @@ Update only from an approved founder ruling or a verified change to `Facts.md`. 
 
 ## Conflict Handling
 
-`Facts.md` is the tie-breaker. A fact absent from source is `NOT IN SOURCE`, not assumed.
+`Facts.md` is the tie-breaker until Facts is updated to match this ruling. Founder ruling 2026-07-27 on Mission vs GTM wins over any note that still treats "Content first, software second" as the Mission.

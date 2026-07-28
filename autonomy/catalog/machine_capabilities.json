@@ -1,0 +1,14 @@
+{
+  "machine_capabilities": [
+    {
+      "id": "mc.write_autonomy_run_record",
+      "name": "Write Autonomy Run Record",
+      "version": "1.0.0",
+      "max_autonomy_level": 1,
+      "adapter_id": "adapter.filesystem",
+      "tool_ids": ["tool.write_run_artifact"],
+      "path_allowlist": ["autonomy/runs/**"],
+      "description": "Write a run artifact under the Autonomy sandbox runs directory."
+    }
+  ]
+}

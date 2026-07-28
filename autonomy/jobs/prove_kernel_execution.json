@@ -1,0 +1,35 @@
+{
+  "id": "job.prove_kernel_execution",
+  "name": "Prove Kernel Execution",
+  "version": "1.0.0",
+  "purpose": "Prove SVOS Kernel v1.0 can safely execute one complete Job through Trigger to Logs.",
+  "trigger": "Founder or test invocation via autonomy.kernel.runner",
+  "required_machine_capabilities": ["mc.write_autonomy_run_record"],
+  "autonomy_level": 1,
+  "preconditions": [
+    "kill_switch.enabled is true",
+    "Machine Capability mc.write_autonomy_run_record exists in catalog"
+  ],
+  "dependencies": [],
+  "permissions": {
+    "allowed_writes": ["autonomy/runs/artifacts/**"],
+    "forbidden": [
+      "paths outside autonomy/runs/",
+      "LEVEL 3 actions",
+      "Company Capability consultation",
+      "Company Asset consultation"
+    ]
+  },
+  "validation": {
+    "required_artifact_fields": [
+      "run_id",
+      "job_id",
+      "machine_capability_id",
+      "status",
+      "completed_at"
+    ]
+  },
+  "outputs": {
+    "artifact_relpath": "autonomy/runs/artifacts/{run_id}.json"
+  }
+}

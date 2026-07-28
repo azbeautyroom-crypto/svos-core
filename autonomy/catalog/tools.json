@@ -1,0 +1,13 @@
+{
+  "tools": [
+    {
+      "id": "tool.write_run_artifact",
+      "name": "Write Run Artifact",
+      "version": "1.0.0",
+      "adapter_id": "adapter.filesystem",
+      "allowed_extensions": [".json"],
+      "path_allowlist": ["autonomy/runs/artifacts/**"],
+      "description": "Write a JSON run artifact under autonomy/runs/artifacts/."
+    }
+  ]
+}

@@ -12,3 +12,10 @@ __MACOSX/
 # (generated/README.md stays tracked to document the folder's purpose.)
 generated/sessionvue-os/
 generated/001 Executive System/
+
+# Autonomy runtime state (queue / registry / logs / artifacts)
+autonomy/runs/**
+!autonomy/runs/.gitkeep
+**/__pycache__/
+*.py[cod]
+.venv/

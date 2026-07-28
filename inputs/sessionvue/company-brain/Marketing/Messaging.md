@@ -4,7 +4,7 @@ object_type: knowledge
 status: review
 owner: founder
 updated: 2026-07-27
-version: 1.1.0
+version: 1.2.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -12,6 +12,14 @@ marketing_domain: true
 ---
 
 # Messaging
+
+## Mission alignment
+
+Company Mission: organize discovery in the beauty industry (see Mission). Marketing expresses discovery; it does not redefine product truth (Product Brain).
+
+## Go-to-market strategy
+
+**Content first, software second** is GTM strategy, not the Mission (founder ruling 2026-07-27).
 
 ## One-sentence thesis (approved)
 
@@ -48,6 +56,7 @@ From founder language rulings 2026-07-27 (also in Voice Guide):
 
 - Never spaced dash punctuation in SessionVue or founder-facing writing; rewrite instead.
 - Never “pros” as shorthand for beauty professionals.
+- Use **Industry Leaders** (never “Power Pros”) when referring to the trusted specialty-region network role (Product Brain / Membership Brain).
 - Never “joining the story before the first chapter” or close story/chapter rewrites.
 - Waitlist promise replacement text: `NOT IN SOURCE — needs founder`.
 

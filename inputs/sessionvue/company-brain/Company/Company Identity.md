@@ -4,7 +4,7 @@ object_type: knowledge
 status: review
 owner: founder
 updated: 2026-07-27
-version: 1.1.0
+version: 1.3.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -18,6 +18,7 @@ generated: false
 |---|---|
 | Founder & CEO | Angel Platt |
 | Founder email | azbeautyroom@gmail.com |
+| Company business email | sessionvue@gmail.com (temporary). Will be replaced later with a professionally formatted company email once the owned sending domain is set. |
 | Founder social handles | `NOT IN SOURCE — needs founder` |
 | Handle `azbeautyroom` | Recorded in source. **Not** Angel Platt's personal or founder social account. Lane ownership (company vs legacy project): `NOT IN SOURCE — needs founder` |
 | Company social handles | `NOT IN SOURCE — needs founder` |
@@ -34,10 +35,12 @@ Do not assign a legacy company or project handle to the founder lane.
 
 ## Positioning
 
+- Company Mission: **organize discovery** (LOCKED 2026-07-27). GTM strategy: content first, software second.
 - Tier philosophy: **stages of business, never hierarchy** (LOCKED).
 - Promise pillars: **Clarity, Transparency, Early Access, Community.**
 - Voice principle: **founder-to-peer, belief-first, no external brand names** (LOCKED 2026-07-21).
 - Content philosophy: belief-building; **forbidden:** scarcity, countdown, urgency (LOCKED 2026-07-24).
+- Industry Leaders: canonical term for trusted specialty-region network role (LOCKED 2026-07-27).
 
 Source: `Facts.md` §1–2; founder identity correction 2026-07-27.
 

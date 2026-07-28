@@ -3,8 +3,8 @@ title: Membership Brain
 object_type: knowledge
 status: review
 owner: founder
-updated: 2026-07-26
-version: 1.0.0
+updated: 2026-07-27
+version: 1.1.0
 contract: CONTRACT-001
 source_of_truth: true
 generated: false
@@ -19,8 +19,14 @@ generated: false
 | Visitor | Exploring / Deciding | $0 | Immediate |
 | Launch | Building foundation | $225 | Immediate |
 | Growth | Expanding / Growing | $469 | Immediate |
-| Power | Leading / Mentoring | $649/mo + $900 setup | By application + mandatory training (LOCKED) |
+| Power | Leading / Mentoring (Industry Leaders network role; see Product Brain) | $649/mo + $900 setup | By application + mandatory training (LOCKED) |
 | Salon | TBD | `NOT IN SOURCE — needs founder` | — |
+
+## Industry Leaders
+
+Canonical product/network term (founder ruling 2026-07-27): **Industry Leaders**. Replaces temporary “Power Pros.” Never use “pros.”
+
+The **Power** tier name and pricing stay in this Membership Brain. Industry Leaders describes the trusted specialty-region network role. Detail: Product Brain.
 
 ## Tier Language
 

@@ -82,7 +82,7 @@ Founder. Domain consumer/owner for operation: Marketing Business System (BS-003)
 
 | Lane | Speaks as | Primary job |
 |---|---|---|
-| Founder brand | Angel Platt on founder-supplied personal accounts only | Belief, trust, education, storytelling, community building, building SessionVue publicly; primary pre-launch growth engine (Mission: content first) |
+| Founder brand | Angel Platt on founder-supplied personal accounts only | Belief, trust, education, storytelling, community building, building SessionVue publicly; primary pre-launch growth engine (GTM: content first; Mission: discovery) |
 | Company brand | SessionVue on company accounts | Product truth, brand world, platform education, announcements, waitlist, community destination |
 
 One idea → role variants per lane. Same Messaging beliefs; different job. Do not run two unrelated theses.

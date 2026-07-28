@@ -30,7 +30,8 @@ headlines, emails, calls to action, generated content, and agent responses inten
    and code/technical syntax are not brand copy and are out of scope for this rule.
 2. **Never call beauty professionals “pros.”** Use context-correct audience language such as:
    beauty professionals, licensed beauty professionals, professionals, beauty business owners,
-   artists, experts.
+   artists, experts. For the trusted specialty-region network role use **Industry Leaders**
+   (never “Power Pros”) (founder ruling 2026-07-27).
 3. **Rejected waitlist / story framing.** Never use: “You're not waiting. You're joining the story
    before the first chapter.” Never use close rewrites that keep the same dramatic story or chapter
    framing. That line is rejected; replacement waitlist promise: `NOT IN SOURCE — needs founder`.

@@ -110,7 +110,15 @@ def test_unmet_dependency_blocks(isolated_runs, monkeypatch):
 def test_validation_failure_blocks(isolated_runs, monkeypatch):
     import autonomy.kernel.runner as runner
 
-    def write_incomplete_artifact(*, run_id, job_id, machine_capability_id, tool, destination_relpath=None):
+    def write_incomplete_artifact(
+        *,
+        run_id,
+        job_id,
+        machine_capability_id,
+        tool,
+        destination_relpath=None,
+        job=None,
+    ):
         relpath = destination_relpath or f"autonomy/runs/artifacts/{run_id}.json"
         abs_path = ROOT / relpath
         abs_path.parent.mkdir(parents=True, exist_ok=True)

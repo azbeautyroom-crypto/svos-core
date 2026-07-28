@@ -8,6 +8,15 @@
       "allowed_extensions": [".json"],
       "path_allowlist": ["autonomy/runs/artifacts/**"],
       "description": "Write a JSON run artifact under autonomy/runs/artifacts/."
+    },
+    {
+      "id": "tool.write_launch_blocker_review",
+      "name": "Write Launch Blocker Review",
+      "version": "1.0.0",
+      "adapter_id": "adapter.filesystem",
+      "allowed_extensions": [".json"],
+      "path_allowlist": ["autonomy/runs/reports/**"],
+      "description": "Write a deterministic Launch Blocker Review JSON report under autonomy/runs/reports/."
     }
   ]
 }

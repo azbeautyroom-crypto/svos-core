@@ -1,0 +1,66 @@
+{
+  "id": "job.launch_blocker_review",
+  "name": "Launch Blocker Review",
+  "version": "1.0.0",
+  "purpose": "Produce a deterministic Launch Blocker Review from in-repo canonical SVOS inputs through Kernel v1.0.",
+  "trigger": "Founder or test invocation via autonomy.kernel.runner",
+  "required_machine_capabilities": ["mc.write_launch_blocker_review"],
+  "autonomy_level": 1,
+  "preconditions": [
+    "kill_switch.enabled is true",
+    "Machine Capability mc.write_launch_blocker_review exists in catalog",
+    "Canonical project and company-brain inputs are readable"
+  ],
+  "dependencies": [],
+  "required_sources": [
+    "inputs/sessionvue/projects/Landing Page (Waitlist Website).md",
+    "inputs/sessionvue/projects/Pre-Launch Go-to-Market.md",
+    "inputs/sessionvue/company-brain/Integrations/Integration Brain.md",
+    "inputs/sessionvue/company-brain/Products/Product Brain.md",
+    "inputs/sessionvue/company-brain/Products/Product Implementation Audit.md",
+    "inputs/sessionvue/company-brain/Company/Founder Directives.md"
+  ],
+  "permissions": {
+    "allowed_reads": [
+      "inputs/sessionvue/projects/**",
+      "inputs/sessionvue/company-brain/**"
+    ],
+    "allowed_writes": ["autonomy/runs/reports/**", "autonomy/runs/artifacts/**"],
+    "forbidden": [
+      "paths outside autonomy/runs/ for writes",
+      "LEVEL 3 actions",
+      "Company Capability consultation",
+      "Company Asset consultation",
+      "application code modification",
+      "Supabase modification",
+      "publish content",
+      "send email",
+      "commit",
+      "push",
+      "compile"
+    ]
+  },
+  "validation": {
+    "required_artifact_fields": [
+      "run_id",
+      "job_id",
+      "machine_capability_id",
+      "status",
+      "completed_at",
+      "report"
+    ],
+    "required_report_fields": [
+      "job",
+      "title",
+      "active_priorities",
+      "sources",
+      "projects",
+      "blockers",
+      "founder_directives",
+      "product_inputs"
+    ]
+  },
+  "outputs": {
+    "artifact_relpath": "autonomy/runs/reports/{run_id}.json"
+  }
+}

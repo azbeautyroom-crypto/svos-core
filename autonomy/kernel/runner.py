@@ -118,6 +118,7 @@ def _tool_write_run_artifact(
     machine_capability_id: str,
     tool: dict[str, Any],
     destination_relpath: str | None = None,
+    job: dict[str, Any] | None = None,
 ) -> Path:
     allowlist = tool["path_allowlist"]
     relpath = destination_relpath or f"autonomy/runs/artifacts/{run_id}.json"
@@ -141,6 +142,73 @@ def _tool_write_run_artifact(
     }
     _write_json(abs_path, payload)
     return abs_path
+
+
+def _tool_write_launch_blocker_review(
+    *,
+    run_id: str,
+    job_id: str,
+    machine_capability_id: str,
+    tool: dict[str, Any],
+    destination_relpath: str | None = None,
+    job: dict[str, Any] | None = None,
+) -> Path:
+    from autonomy.kernel.launch_blocker_review import build_launch_blocker_report
+
+    allowlist = tool["path_allowlist"]
+    relpath = destination_relpath or f"autonomy/runs/reports/{run_id}.json"
+    if not _path_allowed(relpath, allowlist):
+        raise PermissionError(f"Path outside tool allowlist: {relpath}")
+    if not relpath.endswith(".json"):
+        raise PermissionError(f"Disallowed extension for tool: {relpath}")
+
+    abs_path = ROOT / relpath
+    runs_root = (ROOT / "autonomy" / "runs").resolve()
+    if runs_root not in abs_path.resolve().parents and abs_path.resolve() != runs_root:
+        raise PermissionError(f"Refusing write outside autonomy/runs/: {relpath}")
+
+    report = build_launch_blocker_report()
+    payload = {
+        "run_id": run_id,
+        "job_id": job_id,
+        "machine_capability_id": machine_capability_id,
+        "status": "completed",
+        "completed_at": _utc_now(),
+        "report": report,
+    }
+    _write_json(abs_path, payload)
+    return abs_path
+
+
+_TOOL_HANDLERS = {
+    "tool.write_run_artifact": "_tool_write_run_artifact",
+    "tool.write_launch_blocker_review": "_tool_write_launch_blocker_review",
+}
+
+
+def _dispatch_tool(
+    tool: dict[str, Any],
+    *,
+    run_id: str,
+    job_id: str,
+    machine_capability_id: str,
+    destination_relpath: str | None,
+    job: dict[str, Any],
+) -> Path:
+    handler_name = _TOOL_HANDLERS.get(tool["id"])
+    if handler_name is None:
+        raise PermissionError(f"Unknown Tool: {tool['id']}")
+    handler = globals().get(handler_name)
+    if handler is None:
+        raise PermissionError(f"Tool handler missing: {handler_name}")
+    return handler(
+        run_id=run_id,
+        job_id=job_id,
+        machine_capability_id=machine_capability_id,
+        tool=tool,
+        destination_relpath=destination_relpath,
+        job=job,
+    )
 
 
 def run_job(
@@ -331,12 +399,13 @@ def run_job(
 
     # --- Execution ---
     try:
-        artifact_abs = _tool_write_run_artifact(
+        artifact_abs = _dispatch_tool(
+            tool,
             run_id=run_id,
             job_id=job_id,
             machine_capability_id=mc["id"],
-            tool=tool,
             destination_relpath=dest,
+            job=job,
         )
     except PermissionError as exc:
         return block("Execution", str(exc))
@@ -352,7 +421,7 @@ def run_job(
         StageResult(
             name="Execution",
             ok=True,
-            detail="Tool write_run_artifact completed",
+            detail=f"Tool {tool['id']} completed",
             data={"artifact_path": work.artifact_path, "adapter_id": primary["adapter"]["id"]},
         )
     )
@@ -365,6 +434,14 @@ def run_job(
         return block("Validation", f"Artifact missing fields: {missing}")
     if artifact.get("status") != "completed":
         return block("Validation", "Artifact status is not completed")
+    required_report_fields = job.get("validation", {}).get("required_report_fields", [])
+    if required_report_fields:
+        report = artifact.get("report")
+        if not isinstance(report, dict):
+            return block("Validation", "Artifact report missing or not an object")
+        missing_report = [f for f in required_report_fields if f not in report]
+        if missing_report:
+            return block("Validation", f"Report missing fields: {missing_report}")
 
     record(
         StageResult(

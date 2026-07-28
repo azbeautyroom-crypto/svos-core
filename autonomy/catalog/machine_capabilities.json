@@ -9,6 +9,16 @@
       "tool_ids": ["tool.write_run_artifact"],
       "path_allowlist": ["autonomy/runs/**"],
       "description": "Write a run artifact under the Autonomy sandbox runs directory."
+    },
+    {
+      "id": "mc.write_launch_blocker_review",
+      "name": "Write Launch Blocker Review",
+      "version": "1.0.0",
+      "max_autonomy_level": 1,
+      "adapter_id": "adapter.filesystem",
+      "tool_ids": ["tool.write_launch_blocker_review"],
+      "path_allowlist": ["autonomy/runs/reports/**"],
+      "description": "Read approved canonical inputs and write a Launch Blocker Review report under autonomy/runs/reports/."
     }
   ]
 }

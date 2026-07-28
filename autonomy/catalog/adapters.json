@@ -4,8 +4,14 @@
       "id": "adapter.filesystem",
       "name": "Filesystem Adapter",
       "version": "1.0.0",
-      "machine_capability_ids": ["mc.write_autonomy_run_record"],
-      "tool_ids": ["tool.write_run_artifact"],
+      "machine_capability_ids": [
+        "mc.write_autonomy_run_record",
+        "mc.write_launch_blocker_review"
+      ],
+      "tool_ids": [
+        "tool.write_run_artifact",
+        "tool.write_launch_blocker_review"
+      ],
       "description": "Invokes filesystem Tools for allowlisted Autonomy sandbox paths."
     }
   ]
